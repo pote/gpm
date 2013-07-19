@@ -7,7 +7,8 @@ Refer to [this blog post](https://vividcortex.com/blog/2013/07/18/my-wishlist-ve
 
 ## How does it work?
 
-Godeps expects you to have a file called `Godeps` in the root of your project, in the format `<import path> <git tag version>`
+Godeps expects you to have a file called `Godeps` in the root of your project, in the format `<import path> <git tag>`. This obviously
+relies on the git repo of the imported package to have that tag. 
 
 Sample `Godeps`
 ```
@@ -22,10 +23,11 @@ and set to the version specified.
 ## And one more thing
 
 Godeps relies in Git tags because it's the most human-readable format and looks nicer in the `Godeps` file, but thanks to git
-being awesome we can also specify a `git branch` or a `git commit hash` in Godeps, and that will work just as well.
+being awesome we can also specify a `git branch` or a `git commit hash` in Godeps, and that will work just as well, so if a particular
+project you want to import doesn't use git tags for versioning you can still specify the commit you want to work with.
 
 
-Another sample Godeps:
+Another sample `Godeps`
 ```
 github.com/VividCortex/ewma       v1.0
 github.com/VividCortex/robustly   master
