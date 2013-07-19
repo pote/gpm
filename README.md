@@ -5,7 +5,7 @@ so things like dependency resolution are outside of its scope, but it works and 
 
 Refer to [this blog post](https://vividcortex.com/blog/2013/07/18/my-wishlist-versioned-packages-in-go/) for our rationale.
 
-![Johnny Deps](http://imgur.com/MuupBVC)
+![Johnny Deps](http://i.imgur.com/MuupBVC.jpg)
 
 ## Installation
 
@@ -62,4 +62,4 @@ github.com/nu7hatch/gotrail       2eb79d1f03ab24bacbc32b15b75769880629a865
 ## License
 
 Copyright (c) 2013 VividCortex.
-Released under MIT License, check [[LICENSE]] file for details.
+Released under MIT License, check LICENSE file for details.
