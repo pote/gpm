@@ -5,4 +5,4 @@ all:
 
 install:
 	install -d $(prefix)/bin
-	install bin/godeps.sh -m 0755 -t $(prefix)/bin
+	install bin/johnny_deps -m 0755 -t $(prefix)/bin
