@@ -1,0 +1,47 @@
+#!/bin/bash
+
+prefix=NONE
+
+if [ "$prefix" == "NONE" ]; then
+    prefix=/usr/local
+fi
+
+usage()
+{
+    echo "Usage: configure [-h|--help] [--prefix=prefix]"
+    exit
+}
+
+while [ "$1" != "" ]; do
+    case "$1" in
+        --prefix=*)
+            prefix=`echo $1 | sed 's/--prefix=//'`
+            ;;
+        --prefix)
+            shift
+            prefix=$1
+            ;;
+        -h|--help)
+            usage
+            exit
+            ;;
+        *)
+            echo "$0: unknown argument $1" >&2
+            usage
+            exit 1
+            ;;
+    esac
+
+    shift
+done
+
+cat <<EOF
+configuring godeps...
+prefix=$prefix
+>> config.make
+EOF
+
+cat > ./config.make <<EOF
+SUBDIRS=
+prefix=$prefix
+EOF
