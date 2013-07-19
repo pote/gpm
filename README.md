@@ -20,7 +20,7 @@ Once this file is in place, simply by running the `godeps.sh` script attached to
 and set to the version specified.
 
 
-## And one more thing
+### Tags, branches or commit hashes
 
 Godeps relies in Git tags because it's the most human-readable format and looks nicer in the `Godeps` file, but thanks to git
 being awesome we can also specify a `git branch` or a `git commit hash` in Godeps, and that will work just as well, so if a particular
