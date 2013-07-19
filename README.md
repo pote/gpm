@@ -1,7 +1,5 @@
 # VividCortex :: Godeps
 
-## TL;DR
-
 Godeps is simple script we use to have barebones dependency versioning on our Go projects. We have purposely kept it to a minimum of functionality
 so things like dependency resolution are outside of its scope, but it works and solves our problems regarding versioning.
 
