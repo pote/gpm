@@ -1,4 +1,6 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+
+set -e
 
 ## The Godeps file is expected to have lines like so:
 #
@@ -11,7 +13,7 @@ while read dependency; do
   x=( $dependency )
   package=${x[0]}
   version=${x[1]}
-  go get -u -v $package/...
+  go get -a -u -v $package/...
   echo "Setting Go Package: $package to version $version"
   cd $GOPATH/src/$package && git checkout $version && echo "Done"
 done < Godeps
