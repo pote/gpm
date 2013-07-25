@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 set -e
 
@@ -15,4 +15,4 @@ while read package version; do
   GIT_DIR="$GOPATH/src/$package/.git" git checkout $version
   echo "Installing $package"
   go install $package/...
-done < Godeps
+done < ${1-"Godeps"}
