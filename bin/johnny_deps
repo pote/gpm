@@ -12,7 +12,7 @@ set -e
 while read package version; do
   go get -v -u -d $package/...
   echo "Setting $package to version $version"
-  cd $GOPATH/src/$package && git checkout $version
+  GIT_DIR="$GOPATH/src/$package/.git" git checkout $version
   echo "Installing $package"
   go install $package/...
 done < Godeps
