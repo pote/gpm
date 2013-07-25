@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -9,11 +9,10 @@ set -e
 ## where the first element is the import path and the second is a tag
 ## in the project.
 
-while read dependency; do
-  x=( $dependency )
-  package=${x[0]}
-  version=${x[1]}
-  go get -a -u -v $package/...
-  echo "Setting Go Package: $package to version $version"
-  cd $GOPATH/src/$package && git checkout $version && echo "Done"
+while read package version; do
+  go get -v -u -d $package/...
+  echo "Setting $package to version $version"
+  cd $GOPATH/src/$package && git checkout $version
+  echo "Installing $package"
+  go install $package/...
 done < Godeps
