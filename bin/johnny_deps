@@ -15,4 +15,4 @@ while read package version; do
   cd $GOPATH/src/$package && git checkout $version
   echo "Installing $package"
   go install $package/...
-done < Godeps
+done < ${1-"Godeps"}
