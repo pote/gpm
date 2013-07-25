@@ -67,3 +67,7 @@ github.com/nu7hatch/gotrail       2eb79d1f03ab24bacbc32b15b75769880629a865
 
 Copyright (c) 2013 VividCortex.
 Released under MIT License, check LICENSE file for details.
+
+## Inspiration
+
+`Johnny_Deps` was inspired by Ruby's [dep gem](http://cyx.github.io/dep/) and the design philosophies of [@cyx](http://cyx.is/) and [@soveran](http://soveran.com/), big thanks to them.
