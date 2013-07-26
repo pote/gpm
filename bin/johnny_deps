@@ -13,6 +13,9 @@ while read package version; do
   go get -v -u -d $package/...
   echo "Setting $package to version $version"
   cd $GOPATH/src/$package && git checkout $version
+done < Godeps
+
+while read package version; do
   echo "Installing $package"
   go install $package/...
 done < ${1-"Godeps"}
