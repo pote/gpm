@@ -5,7 +5,6 @@ prefix=/usr/local
 usage()
 {
     echo "Usage: configure [-h|--help] [--prefix=prefix]"
-    exit
 }
 
 while [ "$1" != "" ]; do
