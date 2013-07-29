@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -e
+set -eu
 
 ## The Godeps file is expected to have lines like so:
 #
