@@ -13,12 +13,12 @@ root=$PWD
 godeps=${1-"Godeps"}
 
 while read package version; do
-  go get -v -u -d $package/...
+  go get -v -u -d "$package/..."
   echo "Setting $package to version $version"
-  cd $GOPATH/src/$package && git checkout $version
-done < $godeps
+  cd "$GOPATH/src/$package" && git checkout "$version"
+done < "$godeps"
 
 while read package version; do
   echo "Installing $package"
-  go install $package/...
-done < $root/$godeps
+  go install "$package/..."
+done < "$root/$godeps"
