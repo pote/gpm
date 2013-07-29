@@ -10,7 +10,7 @@ usage()
 while [ "$1" != "" ]; do
     case "$1" in
         --prefix=*)
-            prefix=`echo $1 | sed 's/--prefix=//'`
+            prefix=${1#--prefix=}
             ;;
         --prefix)
             shift
