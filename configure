@@ -1,10 +1,6 @@
 #!/bin/bash
 
-prefix=NONE
-
-if [ "$prefix" == "NONE" ]; then
-    prefix=/usr/local
-fi
+prefix=/usr/local
 
 usage()
 {
