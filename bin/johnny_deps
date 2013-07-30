@@ -20,8 +20,10 @@ while read package version; do
   git checkout "$version"
 done < "$godeps"
 
+cd "$root"
+
 while read package version; do
   [ -z "$package" ] && continue
   echo "Installing $package"
   go install "$package/..."
-done < "$root/$godeps"
+done < "$godeps"
