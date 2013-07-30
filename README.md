@@ -28,7 +28,7 @@ $ bash <(curl -s https://raw.github.com/VividCortex/johnny-deps/master/bin/johnn
 Or with something like this, specifying a tagged version, which is wiser.
 
 ```
-$ bash <(curl -s https://github.com/VividCortex/johnny-deps/blob/v0.1.1/bin/johnny_deps)
+$ bash <(curl -s https://raw.github.com/VividCortex/johnny-deps/v0.1.1/bin/johnny_deps)
 ```
 
 ## How does it work?
