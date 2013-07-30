@@ -1,21 +1,16 @@
 #!/bin/bash
 
-prefix=NONE
-
-if [ "$prefix" == "NONE" ]; then
-    prefix=/usr/local
-fi
+prefix=/usr/local
 
 usage()
 {
     echo "Usage: configure [-h|--help] [--prefix=prefix]"
-    exit
 }
 
 while [ "$1" != "" ]; do
     case "$1" in
         --prefix=*)
-            prefix=`echo $1 | sed 's/--prefix=//'`
+            prefix=${1#--prefix=}
             ;;
         --prefix)
             shift

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -e
+set -eu
 
 ## The Godeps file is expected to have lines like so:
 #
@@ -15,7 +15,8 @@ godeps=${1-"Godeps"}
 while read package version; do
   go get -v -u -d "$package/..."
   echo "Setting $package to version $version"
-  cd "$GOPATH/src/$package" && git checkout "$version"
+  cd "$GOPATH/src/$package"
+  git checkout "$version"
 done < "$godeps"
 
 while read package version; do
