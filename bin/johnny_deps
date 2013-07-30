@@ -14,7 +14,7 @@ godeps=${1-"Godeps"}
 
 while read package version; do
   [ -z "$package" ] && continue
-  go get -v -u -d "$package/..."
+  go get -v -u -d "$package"
   echo "Setting $package to version $version"
   cd "${GOPATH%%:*}/src/$package"
   git checkout "$version"
@@ -25,5 +25,5 @@ cd "$root"
 while read package version; do
   [ -z "$package" ] && continue
   echo "Installing $package"
-  go install "$package/..."
+  go install "$package"
 done < "$godeps"
