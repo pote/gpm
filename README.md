@@ -19,11 +19,13 @@ Now the `johnny_deps` tool should be available in your system.
 
 ## Or just don't install it.
 
-You can run `johnny_deps` like so, we recommend installing it, but this is useful for CI servers and such or simply if you don't want to install stuff.
+You can run `johnny_deps` with the following command: 
 
 ```
 $ bash <(curl -s https://raw.github.com/VividCortex/johnny-deps/master/bin/johnny_deps)
 ```
+we recommend installing it, but this is useful for CI servers and such or simply if you don't want to install stuff.
+
 
 ## How does it work?
 
