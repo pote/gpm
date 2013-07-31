@@ -16,7 +16,7 @@ while read package version; do
   [ -z "$package" ] && continue
   go get -v -u -d "$package"
   echo "Setting $package to version $version"
-  cd "${GOPATH%%:*}/src/$package"
+  cd "${GOPATH%%:*}/src/${package%%/...}"
   git checkout "$version"
 done < "$godeps"
 
