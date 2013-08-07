@@ -13,7 +13,7 @@ root=$PWD
 godeps=${1-"Godeps"}
 
 while read package version; do
-  [ -z "$package" ] && continue
+  [[ -z "$package" || "$package" =~ ^# ]] && continue
   go get -v -u -d "$package"
   echo "Setting $package to version $version"
   cd "${GOPATH%%:*}/src/${package%%/...}"
@@ -23,7 +23,7 @@ done < "$godeps"
 cd "$root"
 
 while read package version; do
-  [ -z "$package" ] && continue
+  [[ -z "$package" || "$package" =~ ^# ]] && continue
   echo "Installing $package"
   go install "$package"
 done < "$godeps"
