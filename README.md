@@ -40,6 +40,8 @@ Another sample `Godeps` with a branch and a commit SHA:
 ```
 github.com/VividCortex/ewma       v1.0
 github.com/VividCortex/robustly   master
+# Hey, this is a comment, johnny_deps also supports comments by using `#`
+# at the start of the line, neat huh?
 github.com/nu7hatch/gotrail       2eb79d1f03ab24bacbc32b15b75769880629a865
 ```
 
@@ -72,7 +74,6 @@ To install Johnny Deps just clone the repo and then run:
 Now the `johnny_deps` tool should be available in your system.
 
 
-
 ## Contributing
 
 1. Fork the project.
@@ -87,10 +88,10 @@ Now the `johnny_deps` tool should be available in your system.
 Yeap, we wrote tests for bash. f@#$% yeah!
 
 ```
-$ cd test && ./basic_test.sh
+$ cd test && ./run_all_tests.sh
 ```
 
-We will probably improve the testing infrastructure shortly, we don't like CDing into the directory and the test script should run all tests in the `test` directory, but it's a start. :)
+We will probably improve the testing infrastructure shortly, we don't like CDing into the directory either, but it's a start. :)
 
 ## License
 
