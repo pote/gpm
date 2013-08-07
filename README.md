@@ -39,10 +39,10 @@ Another sample `Godeps` with a branch and a commit SHA:
 
 ```
 github.com/VividCortex/ewma       v1.0
-github.com/VividCortex/robustly   master
-# Hey, this is a comment, johnny_deps also supports comments by using `#`
-# at the start of the line, neat huh?
 github.com/nu7hatch/gotrail       2eb79d1f03ab24bacbc32b15b75769880629a865
+
+# TODO: we need to specify a commit or tag here soon! (I'm actually just showing off comments the Godeps file)
+github.com/VividCortex/robustly   master
 ```
 
 ## Usage
