@@ -1,4 +1,4 @@
-# Johnny Deps
+# Johnny Deps :: ![Build Status](https://circleci.com/gh/VividCortex/johnny-deps.png?circle-token=426f85f6d52ca0b308d1f6aab01dd219afdb4cb0)
 
 We wrote Johnny Deps to provide barebones dependency versioning on our Go projects. We have purposely kept it to a minimum of functionality
 so things like dependency resolution are outside of its scope, but it works and solves our problems regarding versioning, for further context on the writing of this tool refer to [this blog post](https://vividcortex.com/blog/2013/07/18/my-wishlist-versioned-packages-in-go/) 
