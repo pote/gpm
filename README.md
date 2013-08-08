@@ -1,7 +1,7 @@
 # Johnny Deps :: ![Build Status](https://circleci.com/gh/VividCortex/johnny-deps.png?circle-token=426f85f6d52ca0b308d1f6aab01dd219afdb4cb0)
 
 We wrote Johnny Deps to provide barebones dependency versioning on our Go projects. We have purposely kept it to a minimum of functionality
-so things like dependency resolution are outside of its scope, but it works and solves our problems regarding versioning, for further context on the writing of this tool refer to [this blog post](https://vividcortex.com/blog/2013/07/18/my-wishlist-versioned-packages-in-go/) 
+so things like dependency resolution are outside of its scope, but it works and solves our problems regarding versioning, for further context on the writing of this tool refer to [this blog post](https://vividcortex.com/blog/2013/07/18/my-wishlist-versioned-packages-in-go/)
 
 ## How does it work?
 
@@ -51,7 +51,7 @@ You can run johnny_deps directly from the web or install it locally.
 
 ### Run without installing it
 
-You can run `johnny_deps` with the following command if you're brave: 
+You can run `johnny_deps` with the following command if you're brave:
 
 ```
 $ bash <(curl -s https://raw.github.com/VividCortex/johnny-deps/master/bin/johnny_deps)
@@ -88,10 +88,8 @@ Now the `johnny_deps` tool should be available in your system.
 Yeap, we wrote tests for bash. f@#$% yeah!
 
 ```
-$ cd test && ./run_all_tests.sh
+$ make test
 ```
-
-We will probably improve the testing infrastructure shortly, we don't like CDing into the directory either, but it's a start. :)
 
 ## License
 
