@@ -11,19 +11,18 @@ set -eu
 
 root=$PWD
 godeps=${1-"Godeps"}
+deps=$(sed -e 's/#.*//' < "$godeps" | grep -P ".+")
 
 while read package version; do
-  [[ -z "$package" || "$package" =~ ^# ]] && continue
   go get -v -u -d "$package"
   echo "Setting $package to version $version"
   cd "${GOPATH%%:*}/src/${package%%/...}"
   git checkout "$version"
-done < "$godeps"
+done < <(echo "$deps")
 
 cd "$root"
 
 while read package version; do
-  [[ -z "$package" || "$package" =~ ^# ]] && continue
   echo "Installing $package"
   go install "$package"
-done < "$godeps"
+done < <(echo "$deps")
