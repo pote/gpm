@@ -21,8 +21,3 @@ while read package version; do
 done < <(echo "$deps")
 
 cd "$root"
-
-while read package version; do
-  echo "Installing $package"
-  go install "$package"
-done < <(echo "$deps")
