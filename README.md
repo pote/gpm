@@ -25,11 +25,11 @@ $ johnny_deps
 
 When called without arguments `johnny_deps` looks for the Godeps file in the execution directory, alternatively, you can pass the path to the dependency file as an argument like `johnny_deps /path/to/dependencies` (in this case, the `dependencies` file would be parsed and applied).
 
-### Tags, branches or commit hashes
+### Tags or commit hashes
 
 Johnny Deps suggests (and we usually use) Git tags because it's the most
 human-readable format and looks nicer in the `Godeps` file, but thanks to git
-being awesome we can also specify a branch or a commit SHA and that will work just as well.
+being awesome we can also specify a commit SHA and that will work just as well.
 
 So if a particular project you want to import doesn't use git tags for versioning,
 you can still specify the commit you want to work with. Under the hood, we use
@@ -41,9 +41,14 @@ Another sample `Godeps` with a branch and a commit SHA:
 github.com/VividCortex/ewma       v1.0
 github.com/nu7hatch/gotrail       2eb79d1f03ab24bacbc32b15b75769880629a865
 
-# TODO: we need to specify a commit or tag here soon! (I'm actually just showing off comments the Godeps file)
-github.com/VividCortex/robustly   master
+# TODO: This is a comment! :)
 ```
+
+#### Something you absolutely shouldn't do
+
+Because `johnny_deps` uses `git checkout <version>` to set the version of each package, you can technically specify a branch there, like `master` or `develop` or whatever. This is a very bad idea.
+
+The assumption that's made is that the versions in the `Godeps` file are immutable, this way we avoid needing a `Godeps.lock` file like [Ruby's Bundler](http://bundler.io/), you *can* ignore this rule, but be aware that you are doing so at your own peril and that we think you are a very bad person for doing this.
 
 ## Usage
 
