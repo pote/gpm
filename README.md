@@ -56,16 +56,10 @@ You can run johnny_deps directly from the web or install it locally.
 
 ### Run without installing it
 
-You can run `johnny_deps` with the following command if you're brave:
+You can run `johnny_deps` specifying a tagged version, like so:
 
 ```
-$ bash <(curl -s https://raw.github.com/VividCortex/johnny-deps/master/bin/johnny_deps)
-```
-
-Or with something like this, specifying a tagged version, which is wiser.
-
-```
-$ bash <(curl -s https://raw.github.com/VividCortex/johnny-deps/v0.1.5/bin/johnny_deps)
+$ curl -s https://raw.github.com/VividCortex/johnny-deps/v0.1.5/bin/johnny_deps | bash
 ```
 
 ### Install it locally
