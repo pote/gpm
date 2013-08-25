@@ -22,10 +22,11 @@ usage="
 # the specified version on each of them.
 set_dependencies() {
   while read package version; do
-    go get -v -u -d "$package"
+    echo ">> Getting package "$package""
+    go get -u -d "$package"
     echo ">> Setting $package to version $version"
     cd "${GOPATH%%:*}/src/${package%%/...}"
-    git checkout "$version"
+    git checkout -q "$version"
   done < <(echo "$deps")
 }
 

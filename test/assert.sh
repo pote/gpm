@@ -76,7 +76,7 @@ assert_end() {
         || report_time=
 
     if [[ "$tests_failed" -eq 0 ]]; then
-        echo "all $tests passed$report_time."
+        echo ">> All $tests passed$report_time."
     else
         for error in "${tests_errors[@]}"; do echo "$error"; done
         echo "$tests_failed of $tests failed$report_time."
