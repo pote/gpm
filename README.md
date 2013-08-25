@@ -97,9 +97,9 @@ Released under MIT License, check LICENSE file for details.
 
 ## Authorship/Inspiration/Hugs
 
-`Johnny_Deps` was written and is maintained by [@pote](https://github.com/pote) for internal use in [Vivid Cortex](https://github.com/VividCortex) whose leadership have enthusiastically agreed to open source it. The tool is inspired by Ruby's [dep gem](http://cyx.github.io/dep/) - authored by [@cyx](http://cyx.is/) and [@soveran](http://soveran.com/).
+`Johnny_Deps` was written by [@pote](https://github.com/pote) - who maintains [a fork of this project](https://github.com/pote/johnny-deps) - for internal use in [Vivid Cortex](https://github.com/VividCortex) whose leadership have enthusiastically agreed to open source it. It is now maintained by [the VividCortex team](https://github.com/VividCortex?tab=members).
 
-Several [Brainiacs of the VividCortex team](https://github.com/VividCortex?tab=members) have helped make the tool what it is today, check out the [contributors page](https://github.com/VividCortex/johnny-deps/graphs/contributors) for a list of awesome people.
+The tool is inspired by Ruby's [dep gem](http://cyx.github.io/dep/) - authored by [@cyx](http://cyx.is/) and [@soveran](http://soveran.com/), big thanks to them and to all the contributions made by the many wonderful people in our [contributors page](https://github.com/VividCortex/johnny-deps/graphs/contributors).
 
 
 ![Johnny Deps](http://i.imgur.com/MuupBVC.jpg)
