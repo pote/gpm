@@ -2,22 +2,94 @@
 
 set -eu
 
+## Raw URL of the JSON.sh script used, importing in bash is a bitch.
+json_parser="https://raw.github.com/dominictarr/JSON.sh/6c83418eaf0ffcc657c7d6f03d307b8f5a9d349c/JSON.sh"
+
 ## The Godeps file is expected to have lines like so:
 #
 # github.com/VividCortex/robustly v2.6
 #
 ## where the first element is the import path and the second is a tag
-## in the project.
+## or commit SHA in the project.
 
-root=$PWD
-godeps=${1-"Godeps"}
+usage="
+  This is the help
+"
+
+## Functions
+
+# Iterates over Godep file dependencies and sets
+# the specified version on each of them.
+set_dependencies() {
+  while read package version; do
+    go get -v -u -d "$package"
+    echo ">> Setting $package to version $version"
+    cd "${GOPATH%%:*}/src/${package%%/...}"
+    git checkout "$version"
+  done < <(echo "$deps")
+}
+
+# Gets latest git tag for $PACKAGE in github and adds it
+# to the Godeps file
+add_package_to_godeps() {
+  echo ">> Sourching JSON.sh"
+  source <(curl --silent "$json_parser")
+  if [[ $INSTALL_HEAD == false ]]
+  then
+    echo "Adding latest release to Godeps"
+    echo ">> Getting latest release (git tag) from GitHub."
+    tags=curl "https://api.github.com/$package/git/refs/tags"
+
+    echo tags[5]
+  else
+    echo "Adding HEAD to Godeps"
+  fi
+}
+
+
+## /functions
+
+
+## Main execution
+
+# Parse command line arguemnts
+# Argument = -t test -r server -p password -v
+
+# Calls add_package_to_godeps action
+ADD_PACKAGE=false
+INSTALL_HEAD=false
+# Godeps default file is './Godeps' (can be overriden by -f)
+godeps="Godeps"
+
+while getopts “ha:Hf:” OPTION
+do
+  case $OPTION in
+    h)
+      usage
+      exit 1
+      ;;
+    a)
+      ADD_PACKAGE=$OPTARG
+      ;;
+    H)
+      INSTALL_HEAD=true
+      ;;
+    f)
+      godeps=$OPTARG
+      ;;
+    ?)
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+# Get dependencies from Godeps file excluding comments
 deps=$(sed 's/#.*//;/^\s*$/d' < "$godeps")
 
-while read package version; do
-  go get -v -u -d "$package"
-  echo "Setting $package to version $version"
-  cd "${GOPATH%%:*}/src/${package%%/...}"
-  git checkout "$version"
-done < <(echo "$deps")
-
-cd "$root"
+if [[ $ADD_PACKAGE != false ]]
+then
+  add_package_to_godeps
+else
+  set_dependencies
+fi
