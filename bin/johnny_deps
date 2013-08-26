@@ -25,6 +25,12 @@ set_dependencies() {
 
 # Gets latest release or HEAD for a project and adds it to Godeps.
 add_package_to_godeps() {
+  if [[ `echo "$deps"` =~ $ADD_PACKAGE ]]
+  then
+    echo ">> Package "$ADD_PACKAGE" is already in "$godeps"."
+    exit 1
+  fi
+
   if [[ $INSTALL_HEAD == false ]]
   then
     echo ">> Determining last release for "$ADD_PACKAGE""
