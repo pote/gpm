@@ -95,7 +95,7 @@ do
 done
 
 # Get dependencies from Godeps file excluding comments
-deps=$(sed 's/#.*//;/^\s*$/d' < "$godeps")
+deps=$(sed 's/#.*//;/^\s*$/d' < "$godeps") || echo ""
 
 if [[ $ADD_PACKAGE != false ]]
 then
