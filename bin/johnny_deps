@@ -2,19 +2,12 @@
 
 set -eu
 
-## Raw URL of the JSON.sh script used, importing in bash is a bitch.
-json_parser="https://raw.github.com/dominictarr/JSON.sh/6c83418eaf0ffcc657c7d6f03d307b8f5a9d349c/JSON.sh"
-
 ## The Godeps file is expected to have lines like so:
 #
-# github.com/VividCortex/robustly v2.6
+# github.com/nu7hatch/gotrail v2.6
 #
 ## where the first element is the import path and the second is a tag
 ## or commit SHA in the project.
-
-usage="
-  This is the help
-"
 
 ## Functions
 
@@ -30,23 +23,39 @@ set_dependencies() {
   done < <(echo "$deps")
 }
 
-# Gets latest git tag for $PACKAGE in github and adds it
-# to the Godeps file
+# Gets latest release or HEAD for a project and adds it to Godeps.
 add_package_to_godeps() {
-  echo ">> Sourching JSON.sh"
-  source <(curl --silent "$json_parser")
   if [[ $INSTALL_HEAD == false ]]
   then
-    echo "Adding latest release to Godeps"
-    echo ">> Getting latest release (git tag) from GitHub."
-    tags=curl "https://api.github.com/$package/git/refs/tags"
+    echo ">> Determining last release for "$ADD_PACKAGE""
+    last_git_tag=`get_last_git_tag_for "$ADD_PACKAGE"`
 
-    echo tags[5]
+    if [[ "$last_git_tag" == "" ]]
+    then
+      echo ">> Unable to determine last release, do so manually or call with -H to add HEAD to Godeps"
+      exit 1
+    fi
+
+    echo ">> Last release for "$ADD_PACKAGE" is "$last_git_tag""
+    echo ""$ADD_PACKAGE" "$last_git_tag"" >> "$godeps"
+    echo ">> Added to Godeps"
   else
     echo "Adding HEAD to Godeps"
   fi
 }
 
+# Stores latest release for $ADD_PACKAGE in $last_git_tag.
+get_last_git_tag_for() {
+  owner=`echo "$1" | cut -d '/' -f 2`
+  repo=`echo "$1" | cut -d '/' -f 3`
+
+  github_response=`curl -f --silent "https://api.github.com/repos/"$owner"/"$repo"/git/refs/tags"` || echo ''
+
+  # Yay for JSON parsing.
+  regexp='"ref":.*refs\/tags'
+  last_git_tag=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1`
+  echo "$last_git_tag"
+}
 
 ## /functions
 
@@ -54,10 +63,10 @@ add_package_to_godeps() {
 ## Main execution
 
 # Parse command line arguemnts
-# Argument = -t test -r server -p password -v
 
-# Calls add_package_to_godeps action
+# Calls add_package_to_godeps action and stores which package to add.
 ADD_PACKAGE=false
+# Adds latest commit to Godeps file instead of latest release
 INSTALL_HEAD=false
 # Godeps default file is './Godeps' (can be overriden by -f)
 godeps="Godeps"
