@@ -14,10 +14,14 @@ godeps=${1-"Godeps"}
 deps=$(sed 's/#.*//;/^\s*$/d' < "$godeps")
 
 while read package version; do
-  go get -v -u -d "$package"
-  echo "Setting $package to version $version"
-  cd "${GOPATH%%:*}/src/${package%%/...}"
-  git checkout "$version"
+  (
+    go get -v -u -d "$package"
+    echo "Setting $package to version $version"
+    cd "${GOPATH%%:*}/src/${package%%/...}"
+    git checkout "$version"
+  ) &
 done < <(echo "$deps")
+
+wait
 
 cd "$root"
