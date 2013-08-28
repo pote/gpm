@@ -9,7 +9,6 @@ set -eu
 ## where the first element is the import path and the second is a tag
 ## in the project.
 
-root=$PWD
 godeps=${1-"Godeps"}
 deps=$(sed 's/#.*//;/^\s*$/d' < "$godeps")
 
@@ -23,5 +22,3 @@ while read package version; do
 done < <(echo "$deps")
 
 wait
-
-cd "$root"
