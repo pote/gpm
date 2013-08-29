@@ -59,7 +59,7 @@ You can run johnny_deps directly from the web or install it locally.
 You can run `johnny_deps` specifying a tagged version, like so:
 
 ```
-$ curl -s https://raw.github.com/VividCortex/johnny-deps/v0.1.5/bin/johnny_deps | bash
+$ curl -s https://raw.github.com/VividCortex/johnny-deps/v0.2.2/bin/johnny_deps | bash
 ```
 
 ### Install it locally
