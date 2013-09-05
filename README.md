@@ -41,8 +41,8 @@ you can still specify the commit you want to work with. Under the hood, we use
 Another sample `Godeps` with a branch and a commit SHA:
 
 ```
-github.com/replicon/fast-archiver         v1.02
-github.com/nu7hatch/gotrail       2eb79d1f03ab24bacbc32b15b75769880629a865
+github.com/replicon/fast-archiver   v1.02
+github.com/nu7hatch/gotrail         2eb79d1f03ab24bacbc32b15b75769880629a865
 
 # TODO: This is a comment! :)
 ```
