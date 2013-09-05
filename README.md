@@ -81,11 +81,14 @@ Now the `gpm` tool should be available in your system.
 The following flags can be passed to the `gpm` tool:
 
 ```
-    -f <path/to/file>               - by default gpm will look at the directory you are running gpm from, but you can specify a file.
+    -f <path/to/file>               - by default gpm will look at the directory you are running gpm from, but you can
+                                      specify a file.
     
-    -a <package import path>        - retrieves latest release (git tag) from the project's page and adds it to the Godeps file.
+    -a <package import path>        - retrieves latest release (git tag) from the project's page and adds it to the
+                                      Godeps file.
     
-    -H                              - used along with -a, instead of the latest release only the latest commit SHA is added to the Godeps file.
+    -H                              - used along with -a, instead of the latest release only the latest commit SHA
+                                      is added to the Godeps file.
 
 ```
 
