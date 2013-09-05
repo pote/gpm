@@ -1,4 +1,4 @@
-# GPM
+# Go Package Manager
 
 The `gpm` tool provides a simple way to get a reproducible Go dependency tree with a simple command. This is inspired by tools such as Python's [pip](http://www.pip-installer.org/) or Ruby's [dep](http://cyx.github.io/dep/)
 
