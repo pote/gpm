@@ -15,12 +15,15 @@ set -eu
 # the specified version on each of them.
 set_dependencies() {
   while read package version; do
-    echo ">> Getting package "$package""
-    go get -u -d "$package"
-    echo ">> Setting $package to version $version"
-    cd "${GOPATH%%:*}/src/${package%%/...}"
-    git checkout -q "$version"
+    (
+      echo ">> Getting package "$package""
+      go get -u -d "$package"
+      echo ">> Setting $package to version $version"
+      cd "${GOPATH%%:*}/src/${package%%/...}"
+      git checkout -q "$version"
+    ) &
   done < <(echo "$deps")
+  wait
 }
 
 # Gets latest release or HEAD for a project and adds it to Godeps.
