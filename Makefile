@@ -5,7 +5,7 @@ all:
 
 install:
 	install -d $(prefix)/bin
-	install -m 0755 bin/johnny_deps $(prefix)/bin
+	install -m 0755 gpm $(prefix)/bin
 
 test:
 	cd test && ./run_all_tests.sh
