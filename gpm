@@ -16,10 +16,12 @@ set -eu
 set_dependencies() {
   while read package version; do
     (
+      install_path="${GOPATH%%:*}/src/${package%%/...}"
+      [[ -e "$install_path/.git/index.lock" ]] && wait
       echo ">> Getting package "$package""
       go get -u -d "$package"
       echo ">> Setting $package to version $version"
-      cd "${GOPATH%%:*}/src/${package%%/...}"
+      cd $install_path
       git checkout -q "$version"
     ) &
   done < <(echo "$deps")
