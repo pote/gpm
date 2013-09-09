@@ -28,7 +28,7 @@ set_dependencies() {
   wait
 }
 
-# Gets latest release or HEAD for a project and adds it to Godeps.
+# Gets latest release or HEAD for a project and adds it to Godeps unless it's already there.
 add_package_to_godeps() {
   if [[ `echo "$deps"` =~ $ADD_PACKAGE ]]
   then
@@ -38,34 +38,49 @@ add_package_to_godeps() {
 
   if [[ $INSTALL_HEAD == false ]]
   then
-    echo ">> Determining last release for "$ADD_PACKAGE""
-    last_git_tag=`get_last_git_tag_for "$ADD_PACKAGE"`
-
-    if [[ "$last_git_tag" == "" ]]
-    then
-      echo ">> Unable to determine last release, do so manually or call with -H to add HEAD to Godeps"
-      exit 1
-    fi
-
-    echo ">> Last release for "$ADD_PACKAGE" is "$last_git_tag""
-    echo ""$ADD_PACKAGE" "$last_git_tag"" >> "$godeps"
-    echo ">> Added to Godeps"
+    add_last_git_tag_to_godeps
   else
-    echo "Adding HEAD to Godeps"
+    add_HEAD_to_godeps
   fi
+
+  echo ""$ADD_PACKAGE" "$ADD_PACKAGE_VERSION"" >> "$godeps"
+  echo ">> Added to Godeps"
 }
 
-# Stores latest release for $ADD_PACKAGE in $last_git_tag.
-get_last_git_tag_for() {
-  owner=`echo "$1" | cut -d '/' -f 2`
-  repo=`echo "$1" | cut -d '/' -f 3`
+add_last_git_tag_to_godeps() {
+  owner=`echo "$ADD_PACKAGE" | cut -d '/' -f 2`
+  repo=`echo "$ADD_PACKAGE" | cut -d '/' -f 3`
 
+  echo ">> Determining last release for "$ADD_PACKAGE""
   github_response=`curl -f --silent "https://api.github.com/repos/"$owner"/"$repo"/git/refs/tags"` || echo ''
 
   # Yay for JSON parsing.
   regexp='"ref":.*refs\/tags'
-  last_git_tag=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1`
-  echo "$last_git_tag"
+  ADD_PACKAGE_VERSION=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1`
+
+  if [[ "$ADD_PACKAGE_VERSION" == "" ]]
+  then
+    echo ">> Unable to determine last release, do so manually or call with -H to add HEAD to "$godeps"."
+    exit 1
+  fi
+
+  echo ">> Last release for "$ADD_PACKAGE" is "$ADD_PACKAGE_VERSION""
+}
+
+add_HEAD_to_godeps() {
+  owner=`echo "$ADD_PACKAGE" | cut -d '/' -f 2`
+  repo=`echo "$ADD_PACKAGE" | cut -d '/' -f 3`
+
+  echo ">> Determining HEAD for "$ADD_PACKAGE""
+  ADD_PACKAGE_VERSION=`curl -f --silent "https://api.github.com/repos/"$owner"/"$repo"/git/refs/heads/master" | grep sha | tr ' ' '\n' | tail -1 | tr ',' ' ' | tr '"' ' '` || echo ''
+
+  if [[ "$ADD_PACKAGE_VERSION" == "" ]]
+  then
+    echo ">> Unable to determine HEAD. Check manually and add to "$godeps"."
+    exit 1
+  fi
+
+  echo ">> HEAD for "$ADD_PACKAGE" is "$ADD_PACKAGE_VERSION""
 }
 
 ## /functions
