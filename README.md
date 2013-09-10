@@ -6,20 +6,16 @@ The `gpm` tool provides a simple way to work with specific versions of Go packag
 ## The Godeps file
 
 `gpm` expects you to have a file called `Godeps` in the root of your project, in the format `<import path> <git tag>`.
-
-Here's a sample `Godeps` file:
-
-```
-github.com/nu7hatch/gotrail         v0.0.2
-github.com/replicon/fast-archiver   v1.02
-```
-
-Once this file is in place, running the `gpm` tool will download those packages
-and check out the version specified:
+Once this file is in place, running the `gpm` tool will download those packages and check out the specified versions.
 
 ```
 $ ls .
 Godeps  foo.go  foo_test.go
+
+$ cat Godeps
+github.com/nu7hatch/gotrail         v0.0.2
+github.com/replicon/fast-archiver   v1.02
+
 $ gpm
 >> Getting package github.com/nu7hatch/gotrail
 >> Getting package github.com/replicon/fast-archiver
