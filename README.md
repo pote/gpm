@@ -21,12 +21,69 @@ and check out the version specified:
 $ ls .
 Godeps  foo.go  foo_test.go
 $ gpm
+>> Getting package github.com/nu7hatch/gotrail
+>> Getting package github.com/replicon/fast-archiver
+>> Setting github.com/nu7hatch/gotrail to version v0.0.2
+>> Setting github.com/replicon/fast-archiver to version v1.02
 ```
 
-When called without arguments `gpm` looks for the Godeps file in the execution directory.
+When called without arguments `gpm` looks for the Godeps file in the execution directory, you can use the `-f` flag to specify a different `Godeps` file.
+
+You can add dependencies to your `Godeps` file manually or by using the following commands:
+
+```
+$ gpm -a github.com/nu7hatch/gotrail
+>> Determining last release for github.com/nu7hatch/gotrail
+>> Last release for github.com/nu7hatch/gotrail is v0.0.2
+>> Added to Godeps
+
+$ gpm -a github.com/bmizerany/pat -H
+>> Determining HEAD for github.com/bmizerany/pat
+>> HEAD for github.com/bmizerany/pat is  51b7af73e39f6dc59846b22d56ca886d105ef0c3
+>> Added to Godeps
+```
 
 It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies,
 this way any project includes the documentation required to be built correctly at any point in time.
+
+## Installation
+
+You can run `gpm` directly from the web or install it locally.
+
+### Run without installing it
+
+You can run `gpm` specifying a tagged version directly from github, like so:
+
+```
+$ curl -s https://raw.github.com/pote/gpm/v0.3.1/gpm | bash
+```
+
+### Install locally
+
+To install `gpm` just clone the repo and then run:
+
+    $ git clone git@github.com:pote/gpm.git
+    $ cd gpm
+    $ ./configure --prefix=/usr/local
+    $ make install
+
+Now the `gpm` tool should be available in your system.
+
+## Flags
+
+The following flags can be passed to the `gpm` tool:
+
+
+* `-f <path/to/file>`          - by default gpm will look at the directory you are running gpm from, but you can
+                                 specify a file.
+    
+* `-a <package import path>`   - retrieves latest release (git tag) from the project's page and adds it to the
+                                 Godeps file.
+    
+* `-H`                         - used along with `-a`, instead of the latest release only the latest commit SHA
+                                 is added to the Godeps file.
+
+
 
 ### Tags or commit hashes
 
@@ -52,45 +109,6 @@ github.com/nu7hatch/gotrail         2eb79d1f03ab24bacbc32b15b75769880629a865
 Because `gpm` uses `git checkout <version>` to set the version of each package, you can technically specify a branch there, like `master` or `develop` or whatever. This is a very bad idea.
 
 The assumption that's made is that the versions in the `Godeps` file are immutable, this way we avoid needing a `Godeps.lock` file like [Ruby's Bundler](http://bundler.io/), you *can* ignore this rule, but be aware that you are doing so at your own peril and that we think you are a very bad person for doing this.
-
-## Usage
-
-You can run `gpm` directly from the web or install it locally.
-
-### Run without installing it
-
-You can run `gpm` specifying a tagged version, like so:
-
-```
-$ curl -s https://raw.github.com/pote/gpm/v0.3.1/gpm | bash
-```
-
-### Install it locally
-
-To install `gpm` just clone the repo and then run:
-
-    $ git clone git@github.com:pote/gpm.git
-    $ cd gpm
-    $ ./configure --prefix=/usr/local
-    $ make install
-
-Now the `gpm` tool should be available in your system.
-
-### Usage Options
-
-The following flags can be passed to the `gpm` tool:
-
-```
-    -f <path/to/file>               - by default gpm will look at the directory you are running gpm from, but you can
-                                      specify a file.
-    
-    -a <package import path>        - retrieves latest release (git tag) from the project's page and adds it to the
-                                      Godeps file.
-    
-    -H                              - used along with -a, instead of the latest release only the latest commit SHA
-                                      is added to the Godeps file.
-
-```
 
 
 ### Running tests
