@@ -6,6 +6,7 @@ The `gpm` tool provides a simple way to work with specific versions of Go packag
 ## The Godeps file
 
 `gpm` expects you to have a file called `Godeps` in the root of your project, in the format `<import path> <git tag>`.
+
 Once this file is in place, running the `gpm` tool will download those packages and check out the specified versions.
 
 ```
