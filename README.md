@@ -14,8 +14,9 @@ $ ls .
 Godeps  foo.go  foo_test.go
 
 $ cat Godeps
+# This is a comment
 github.com/nu7hatch/gotrail         v0.0.2
-github.com/replicon/fast-archiver   v1.02
+github.com/replicon/fast-archiver   v1.02   #This is another comment!
 
 $ gpm
 >> Getting package github.com/nu7hatch/gotrail
