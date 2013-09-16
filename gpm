@@ -120,6 +120,13 @@ do
   esac
 done
 
+# Check if Godeps file exists
+if [[ ! -f "$godeps" ]]
+then
+  echo ">> $godeps file does not exist."
+  exit 1
+fi
+
 # Get dependencies from Godeps file excluding comments
 deps=$(sed 's/#.*//;/^\s*$/d' < "$godeps") || echo ""
 
