@@ -22,10 +22,13 @@ set_dependencies() {
       go get -u -d "$package"
       echo ">> Setting $package to version $version"
       cd $install_path
-      git checkout -q "$version"
+      [ -d .hg ] && hg update -q "$version"
+      [ -d .git ] && git checkout -q "$version"
+      [ -d .bzr ] && bzr revert -q -r "$version"
     ) &
   done < <(echo "$deps")
   wait
+  echo ">> All Done"
 }
 
 # Gets latest release or HEAD for a project and adds it to Godeps unless it's already there.
