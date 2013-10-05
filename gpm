@@ -56,7 +56,7 @@ add_last_git_tag_to_godeps() {
 
   # Yay for JSON parsing.
   regexp='"ref":.*refs\/tags'
-  ADD_PACKAGE_VERSION=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1 | tr -d ' '`
+  ADD_PACKAGE_VERSION=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1`
 
   if [[ "$ADD_PACKAGE_VERSION" == "" ]]
   then
@@ -72,7 +72,7 @@ add_HEAD_to_godeps() {
   repo=`echo "$ADD_PACKAGE" | cut -d '/' -f 3`
 
   echo ">> Determining HEAD for "$ADD_PACKAGE""
-  ADD_PACKAGE_VERSION=`curl -f --silent "https://api.github.com/repos/"$owner"/"$repo"/git/refs/heads/master" | grep sha | tr ' ' '\n' | tail -1 | tr ',' ' ' | tr '"' ' '` || echo ''
+  ADD_PACKAGE_VERSION=`curl -f --silent "https://api.github.com/repos/"$owner"/"$repo"/git/refs/heads/master" | grep sha | tr ' ' '\n' | tail -1 | tr ',' ' ' | tr '"' ' ' | tr -d ' '` || echo ''
 
   if [[ "$ADD_PACKAGE_VERSION" == "" ]]
   then

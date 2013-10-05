@@ -11,7 +11,7 @@ rm testGodeps
 touch testGodeps
 ../gpm -a github.com/pote/johnny-deps-testing-package -f testGodeps -H
 assert "echo "$?"" "0"
-assert "cat testGodeps" "github.com/pote/johnny-deps-testing-package  6596ffa75610ea329fb6ff13ac7da289143d427b"
+assert "cat testGodeps" "github.com/pote/johnny-deps-testing-package 6596ffa75610ea329fb6ff13ac7da289143d427b"
 rm testGodeps
 
 
