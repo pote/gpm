@@ -56,7 +56,7 @@ add_last_git_tag_to_godeps() {
 
   # Yay for JSON parsing.
   regexp='"ref":.*refs\/tags'
-  ADD_PACKAGE_VERSION=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1`
+  ADD_PACKAGE_VERSION=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1 | tr -d ' '`
 
   if [[ "$ADD_PACKAGE_VERSION" == "" ]]
   then
