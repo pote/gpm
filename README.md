@@ -53,7 +53,7 @@ You can run `gpm` directly from the web or install it locally.
 You can run `gpm` specifying a tagged version directly from github, like so:
 
 ```
-$ curl -s https://raw.github.com/pote/gpm/v0.3.1/gpm | bash
+$ curl -s https://raw.github.com/pote/gpm/v0.4.0/gpm | bash
 ```
 
 ### Install locally
