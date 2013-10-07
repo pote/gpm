@@ -92,7 +92,8 @@ specify a commit SHA and that will work just as well.
 
 So if a particular project you want to import doesn't use git tags for versioning,
 you can still specify the commit you want to work with. Under the hood, we use
-`git checkout <tag>`, so anything `git` accepts for that argument will work.
+`git checkout <tag>` (or the `bzr` and `hg` alternatives) so anything they accepts
+for that argument will work.
 
 Another sample `Godeps` with a branch and a commit SHA:
 
