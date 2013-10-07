@@ -1,11 +1,11 @@
 # Go Package Manager [![Build Status](https://travis-ci.org/pote/hashifiable.png?branch=master)](https://travis-ci.org/pote/gpm)
 
-The `gpm` tool provides a simple way to work with specific versions of Go packages with little overhead by leveraging the power of Git. This is inspired by tools such as Python's [pip](http://www.pip-installer.org/) or Ruby's [dep](http://cyx.github.io/dep/)
+The `gpm` tool provides a simple way to work with specific versions of Go packages with little overhead, gpm is inspired by tools such as Python's [pip](http://www.pip-installer.org/) and Ruby's [dep](http://cyx.github.io/dep/)
 
 
 ## The Godeps file
 
-`gpm` expects you to have a file called `Godeps` in the root of your project, in the format `<import path> <git tag>`.
+`gpm` expects you to have a file called `Godeps` in the root of your project, in the format `<import path> <tag/revision>`.
 
 Once this file is in place, running the `gpm` tool will download those packages and check out the specified versions.
 
@@ -40,6 +40,7 @@ $ gpm -a github.com/bmizerany/pat -H
 >> HEAD for github.com/bmizerany/pat is  51b7af73e39f6dc59846b22d56ca886d105ef0c3
 >> Added to Godeps
 ```
+Note: the -a flag only works with github repositories at this point in time.
 
 It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies,
 this way any project includes the documentation required to be built correctly at any point in time.
@@ -75,7 +76,7 @@ The following flags can be passed to the `gpm` tool:
 * `-f <path/to/file>`          - by default gpm will look at the directory you are running gpm from, but you can
                                  specify a file.
     
-* `-a <package import path>`   - retrieves latest release (git tag) from the project's page and adds it to the
+* `-a <package import path>`   - retrieves latest release (git tag) from the project's page and adds it to the (works only with github repositories).
                                  Godeps file.
     
 * `-H`                         - used along with `-a`, instead of the latest release only the latest commit SHA
