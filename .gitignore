@@ -3,3 +3,4 @@
 config.make
 .env
 Godeps
+.godeps
