@@ -100,12 +100,12 @@ INSTALL_HEAD=false
 # Godeps default file is './Godeps' (can be overriden by -f)
 godeps="Godeps"
 
-while getopts “ha:Hf:” OPTION
+while getopts “va:Hf:” OPTION
 do
   case $OPTION in
-    h)
-      usage
-      exit 1
+    v)
+      echo "v0.4.1"
+      exit
       ;;
     a)
       ADD_PACKAGE=$OPTARG
