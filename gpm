@@ -31,72 +31,10 @@ set_dependencies() {
   echo ">> All Done"
 }
 
-# Gets latest release or HEAD for a project and adds it to Godeps unless it's already there.
-add_package_to_godeps() {
-  if [[ `echo "$deps"` =~ $ADD_PACKAGE ]]
-  then
-    echo ">> Package "$ADD_PACKAGE" is already in "$godeps"."
-    exit 1
-  fi
-
-  if [[ $INSTALL_HEAD == false ]]
-  then
-    add_last_git_tag_to_godeps
-  else
-    add_HEAD_to_godeps
-  fi
-
-  echo ""$ADD_PACKAGE" "$ADD_PACKAGE_VERSION"" >> "$godeps"
-  echo ">> Added to Godeps"
-}
-
-add_last_git_tag_to_godeps() {
-  owner=`echo "$ADD_PACKAGE" | cut -d '/' -f 2`
-  repo=`echo "$ADD_PACKAGE" | cut -d '/' -f 3`
-
-  echo ">> Determining last release for "$ADD_PACKAGE""
-  github_response=`curl -f --silent "https://api.github.com/repos/"$owner"/"$repo"/git/refs/tags"` || echo ''
-
-  # Yay for JSON parsing.
-  regexp='"ref":.*refs\/tags'
-  ADD_PACKAGE_VERSION=`echo "$github_response" | grep "$regexp" | tail -1 | cut -d'/' -f 3 | cut -d'"' -f 1`
-
-  if [[ "$ADD_PACKAGE_VERSION" == "" ]]
-  then
-    echo ">> Unable to determine last release, do so manually or call with -H to add HEAD to "$godeps"."
-    exit 1
-  fi
-
-  echo ">> Last release for "$ADD_PACKAGE" is "$ADD_PACKAGE_VERSION""
-}
-
-add_HEAD_to_godeps() {
-  owner=`echo "$ADD_PACKAGE" | cut -d '/' -f 2`
-  repo=`echo "$ADD_PACKAGE" | cut -d '/' -f 3`
-
-  echo ">> Determining HEAD for "$ADD_PACKAGE""
-  ADD_PACKAGE_VERSION=`curl -f --silent "https://api.github.com/repos/"$owner"/"$repo"/git/refs/heads/master" | grep sha | tr ' ' '\n' | tail -1 | tr ',' ' ' | tr '"' ' ' | tr -d ' '` || echo ''
-
-  if [[ "$ADD_PACKAGE_VERSION" == "" ]]
-  then
-    echo ">> Unable to determine HEAD. Check manually and add to "$godeps"."
-    exit 1
-  fi
-
-  echo ">> HEAD for "$ADD_PACKAGE" is "$ADD_PACKAGE_VERSION""
-}
-
-## /functions
-
 
 ## Main execution
 
 # Parse command line arguemnts
-
-# Calls add_package_to_godeps action and stores which package to add.
-ADD_PACKAGE=false
-# Adds latest commit to Godeps file instead of latest release
-INSTALL_HEAD=false
 # Godeps default file is './Godeps' (can be overriden by -f)
 godeps="Godeps"
 
@@ -107,18 +45,8 @@ do
       echo "v0.4.1"
       exit
       ;;
-    a)
-      ADD_PACKAGE=$OPTARG
-      ;;
-    H)
-      INSTALL_HEAD=true
-      ;;
     f)
       godeps=$OPTARG
-      ;;
-    ?)
-      usage
-      exit 1
       ;;
   esac
 done
@@ -132,10 +60,4 @@ fi
 
 # Get dependencies from Godeps file excluding comments
 deps=$(sed 's/#.*//;/^\s*$/d' < "$godeps") || echo ""
-
-if [[ $ADD_PACKAGE != false ]]
-then
-  add_package_to_godeps
-else
-  set_dependencies
-fi
+set_dependencies

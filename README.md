@@ -27,21 +27,6 @@ $ gpm
 
 When called without arguments `gpm` looks for the Godeps file in the execution directory, you can use the `-f` flag to specify a different `Godeps` file.
 
-You can add dependencies to your `Godeps` file manually or by using the following commands:
-
-```
-$ gpm -a github.com/nu7hatch/gotrail
->> Determining last release for github.com/nu7hatch/gotrail
->> Last release for github.com/nu7hatch/gotrail is v0.0.2
->> Added to Godeps
-
-$ gpm -a github.com/bmizerany/pat -H
->> Determining HEAD for github.com/bmizerany/pat
->> HEAD for github.com/bmizerany/pat is  51b7af73e39f6dc59846b22d56ca886d105ef0c3
->> Added to Godeps
-```
-Note: the -a flag only works with github repositories at this point in time.
-
 It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies,
 this way any project includes the documentation required to be built correctly at any point in time.
 
@@ -75,13 +60,6 @@ The following flags can be passed to the `gpm` tool:
 
 * `-f <path/to/file>`          - by default gpm will look at the directory you are running gpm from, but you can
                                  specify a file.
-    
-* `-a <package import path>`   - retrieves latest release (git tag) from the project's page and adds it to the (works only with github repositories).
-                                 Godeps file.
-    
-* `-H`                         - used along with `-a`, instead of the latest release only the latest commit SHA
-                                 is added to the Godeps file.
-
 
 
 ### Tags or commit hashes
