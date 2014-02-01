@@ -1,4 +1,4 @@
-# Go Package Manager [![Build Status](https://travis-ci.org/pote/hashifiable.png?branch=master)](https://travis-ci.org/pote/gpm)
+# Go Package Manager [![Build Status](https://travis-ci.org/pote/gpm.png?branch=master)](https://travis-ci.org/pote/gpm)
 
 The `gpm` tool provides a simple way to work with specific versions of Go packages with little overhead, gpm is inspired by tools such as Python's [pip](http://www.pip-installer.org/) and Ruby's [dep](http://cyx.github.io/dep/)
 
