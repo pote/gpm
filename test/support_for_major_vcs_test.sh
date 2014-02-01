@@ -1,4 +1,5 @@
 . assert.sh
+GPM=../bin/gpm
 
 echo "
 # Bazaar Repos
@@ -11,7 +12,7 @@ code.google.com/p/go.example/hello/...    ae081cd1d6cc
 github.com/nu7hatch/gotrail               v0.0.2
 " > testGodeps
 
-../gpm -f testGodeps
+$GPM -f testGodeps
 assert "echo "$?"" "0"
 rm testGodeps
 
