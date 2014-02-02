@@ -69,17 +69,12 @@ set_dependencies() {
 
 ## /Functions
 
-if [[ ! -f "Godeps" ]]
-then
-  echo ">> Godeps file does not exist."
-  exit 1
-fi
-
 case "${1:-"install"}" in
   "version")
     ">> gpm v0.5.0"
     ;;
   "install")
+    [[ -f "Godeps" ]] || (echo ">> Godeps file does not exist." && exit 1)
     set_dependencies
     ;;
   *)
