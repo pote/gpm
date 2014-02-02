@@ -34,9 +34,9 @@ $ gpm
 It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies,
 this way any project includes the documentation required to be built correctly at any point in time.
 
-## Install locally
+## Install
 
-To install `gpm` just clone the repo and then run:
+You can install `gpm` like so:
 
     $ git clone git@github.com:pote/gpm.git && cd gpm
     $ make install
