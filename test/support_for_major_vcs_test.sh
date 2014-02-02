@@ -10,10 +10,10 @@ code.google.com/p/go.example/hello/...    ae081cd1d6cc
 
 # Git Repos
 github.com/nu7hatch/gotrail               v0.0.2
-" > testGodeps
+" > Godeps
 
-$GPM -f testGodeps
+$GPM
 assert "echo "$?"" "0"
-rm testGodeps
+rm Godeps
 
 assert_end examples
