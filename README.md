@@ -22,8 +22,13 @@ code.google.com/p/go.example/hello/...    ae081cd1d6cc  # And so are Mercurial o
 $ gpm
 >> Getting package github.com/nu7hatch/gotrail
 >> Getting package github.com/replicon/fast-archiver
+>> Getting package launchpad.net/gocheck
+>> Getting package code.google.com/p/go.example/hello/...
 >> Setting github.com/nu7hatch/gotrail to version v0.0.2
 >> Setting github.com/replicon/fast-archiver to version v1.02
+>> Setting code.google.com/p/go.example/hello/... to version ae081cd1d6cc
+>> Setting launchpad.net/gocheck to version r2013.03.03
+>> All Done
 ```
 
 It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies,
