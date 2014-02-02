@@ -6,11 +6,9 @@ set -eu
 
 usage() {
 cat << EOF
-usage: gpm [COMMAND]
-
 SYNOPSIS
 
-    gpm leverages the power of the `go get` command and the underlying version
+    gpm leverages the power of the go get command and the underlying version
     control systems used by it to set your Go dependencies to desired versions,
     thus allowing easily reproducible builds in your Go projects.
 
@@ -29,18 +27,11 @@ SYNOPSIS
     has its own isolated dependency directory, it's usage is recommended.
 
 USAGE
-      $ gpm             # Same as 'install'
-      $ gpm install
-      $ gpm version
-      $ gpm help
-
-COMMANDS
-
-  install   parses your Godeps file, installs the required dependencies and
-            sets them to the appropriate version.
-
-  version   outputs the installed version of gpm.
-  help      prints this message
+      $ gpm             # Same as 'install'.
+      $ gpm install     # Parses the Godeps file, installs dependencies and sets
+                        # them to the appropriate version.
+      $ gpm version     # Outputs version information
+      $ gpm help        # Prints this message
 EOF
 }
 
@@ -71,11 +62,14 @@ set_dependencies() {
 
 case "${1:-"install"}" in
   "version")
-    echo ">> gpm v0.5.1"
+    echo ">> gpm v1.0.0"
     ;;
   "install")
     [[ -f "Godeps" ]] || (echo ">> Godeps file does not exist." && exit 1)
     set_dependencies
+    ;;
+  "help")
+    usage
     ;;
   *)
     usage
