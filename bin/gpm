@@ -3,7 +3,6 @@
 set -eu
 
 ## Functions/
-
 usage() {
 cat << EOF
 SYNOPSIS
@@ -43,7 +42,9 @@ set_dependencies() {
   while read package version; do
     (
       install_path="${GOPATH%%:*}/src/${package%%/...}"
-      [[ -e "$install_path/.git/index.lock" ]] && wait
+      [[ -e "$install_path/.git/index.lock" ||
+      -e "$install_path/.hg/store/lock" ||
+      -e "$install_path/.bzr/checkout/lock" ]] && wait
       echo ">> Getting package "$package""
       go get -u -d "$package"
       echo ">> Setting $package to version $version"
@@ -57,9 +58,7 @@ set_dependencies() {
   echo ">> All Done"
 }
 
-
 ## /Functions
-
 case "${1:-"install"}" in
   "version")
     echo ">> gpm v1.0.0"
