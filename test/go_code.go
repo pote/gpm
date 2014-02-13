@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/pote/johnny-deps-testing-package"
+	"github.com/pote/gpm-testing-package"
 )
 
 func main() {
-	fmt.Println(johnny_deps_testing_package.Version())
+	fmt.Println(gpm_testing_package.Version())
 }
