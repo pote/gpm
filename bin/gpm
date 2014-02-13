@@ -61,7 +61,7 @@ set_dependencies() {
 ## /Functions
 case "${1:-"install"}" in
   "version")
-    echo ">> gpm v1.0.0"
+    echo ">> gpm v1.0.1"
     ;;
   "install")
     [[ -f "Godeps" ]] || (echo ">> Godeps file does not exist." && exit 1)
