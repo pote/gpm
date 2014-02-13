@@ -49,9 +49,9 @@ set_dependencies() {
       go get -u -d "$package"
       echo ">> Setting $package to version $version"
       cd $install_path
-      [ -d .hg ] && hg update -q "$version"
-      [ -d .git ] && git checkout -q "$version"
-      [ -d .bzr ] && bzr revert -q -r "$version"
+      [ -d .hg ]  && hg update    -q      "$version"
+      [ -d .git ] && git checkout -q      "$version"
+      [ -d .bzr ] && bzr revert   -q -r   "$version"
     ) &
   done < <(echo "$deps")
   wait
@@ -65,6 +65,7 @@ case "${1:-"install"}" in
     ;;
   "install")
     [[ -f "Godeps" ]] || (echo ">> Godeps file does not exist." && exit 1)
+    (which go > /dev/null) || ( echo ">> Go is currently not installed or in your PATH" && exit 1)
     set_dependencies
     ;;
   "help")
