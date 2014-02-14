@@ -7,14 +7,14 @@ gpm is a minimalistic package manager for Go that leverages the power of the `go
 Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects.
 
 
-### Install it in OSX with Homebrew
+### Install in OSX with Homebrew
 
 ```bash
 $ brew install gpm
 ```
 
 
-### Install it manually on *nix
+### Install manually on *nix
 
 ```bash
 $ git clone https://github.com/pote/gpm.git && cd gpm
@@ -63,7 +63,7 @@ way to contribute, if you send a pull request please be a good citizen and do th
 
 * Create a feature branch with a meaningful name.
 * Make sure your commit messages and PR comments are informative.
-* Write a tests for your feature if applicable.
+* Write a test for your feature if applicable.
 * Always remember to run the test suite with `make test` before comitting.
 
 Either way, thank you **very** much for any form of contribution, even if a patch ends up not being merged
