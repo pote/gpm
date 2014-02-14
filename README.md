@@ -1,22 +1,27 @@
 # Go Package Manager [![Build Status](https://travis-ci.org/pote/gpm.png?branch=master)](https://travis-ci.org/pote/gpm)
 
+![gpm](http://f.cl.ly/items/2r0a3S140z2g0d0A411X/gpm.png)
+
 gpm is a minimalistic package manager for Go that leverages the power of the `go get` command and the underlying version control systems used by it to set your Go dependencies to desired versions, thus allowing easily reproducible builds in your Go projects.
 
-Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects. 
+Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects.
 
 
 ### Install it in OSX with Homebrew
 
-    $ brew install gpm
+```bash
+$ brew install gpm
+```
 
 
 ### Install it manually on *nix
 
-    $ git clone https://github.com/pote/gpm.git && cd gpm
-    $ git checkout v1.0.1 # You can ignore this part if you want to install HEAD.
-    $ ./configure 
-    $ make install
-
+```bash
+$ git clone https://github.com/pote/gpm.git && cd gpm
+$ git checkout v1.0.1 # You can ignore this part if you want to install HEAD.
+$ ./configure
+$ make install
+```
 
 ## The Godeps file
 
@@ -24,7 +29,7 @@ Go Package Manager makes no assumptions about your dependencies and supports Git
 
 Once this file is in place, running the `gpm` tool will download those packages and check out the specified versions.
 
-```
+```bash
 $ ls .
 Godeps  foo.go  foo_test.go
 
