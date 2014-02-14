@@ -56,10 +56,10 @@ Lots of people have contributed to make gpm what it is today, if you want to tak
 with the code please do so! Opening issues on bugs, feature requests or simple food for thought are a great
 way to contribute, if you send a pull request please be a good citizen and do things in a tidy manner.
 
-1) Create a feature branch with a meaningful name.
-2) Make sure your commit messages and PR comments are informative.
-3) Write a tests for your feature if applicable.
-4) Always remember to run the test suite with `make test`.
+* Create a feature branch with a meaningful name.
+* Make sure your commit messages and PR comments are informative.
+* Write a tests for your feature if applicable.
+* Always remember to run the test suite with `make test` before comitting.
 
 Either way, thank you **very** much for any form of contribution, even if a patch ends up not being merged
 the fact that it was sent and forced us to think about it is a contribution in itself.
