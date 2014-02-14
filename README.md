@@ -4,6 +4,20 @@ gpm is a minimalistic package manager for Go that leverages the power of the `go
 
 Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects. 
 
+
+### Install it in OSX with Homebrew
+
+    $ brew install gpm
+
+
+### Install it manually on *nix
+
+    $ git clone https://github.com/pote/gpm.git && cd gpm
+    $ git checkout v1.0.1 # You can ignore this part if you want to install HEAD.
+    $ ./configure 
+    $ make install
+
+
 ## The Godeps file
 
 `gpm` expects you to have a file called `Godeps` in the root of your Go application in the format `<import path> <tag/revision>`.
@@ -35,22 +49,20 @@ $ gpm
 It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies,
 this way any project includes the documentation required to be built correctly at any point in time.
 
-## Install
 
-You can install `gpm` like so:
+### Contributing
 
-    $ git clone git@github.com:pote/gpm.git && cd gpm
-    $ make install
+Lots of people have contributed to make gpm what it is today, if you want to take your time to play around
+with the code please do so! Opening issues on bugs, feature requests or simple food for thought are a great
+way to contribute, if you send a pull request please be a good citizen and do things in a tidy manner.
 
-Now the `gpm` tool should be available in your system.
+1) Create a feature branch with a meaningful name.
+2) Make sure your commit messages and PR comments are informative.
+3) Write a tests for your feature if applicable.
+4) Always remember to run the test suite with `make test`.
 
-### Running tests
-
-Yeap, we wrote tests for bash. f@#$% awesome.
-
-```
-$ make test
-```
+Either way, thank you **very** much for any form of contribution, even if a patch ends up not being merged
+the fact that it was sent and forced us to think about it is a contribution in itself.
 
 ## License
 
