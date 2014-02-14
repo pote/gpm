@@ -29,7 +29,7 @@ $ make install
 
 Once this file is in place, running the `gpm` tool will download those packages and check out the specified versions.
 
-```
+```bash
 $ ls .
 Godeps  foo.go  foo_test.go
 
