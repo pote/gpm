@@ -75,6 +75,8 @@ Released under MIT License, check LICENSE file for details.
 
 ## Authorship/Inspiration/Hugs
 
-This tool is inspired by Ruby's [dep gem](http://cyx.github.io/dep/) - authored by [@cyx](http://cyx.is/) and [@soveran](http://soveran.com/), big thanks to them and to all the contributions made by the many wonderful people in our [contributors page](https://github.com/pote/gpm/graphs/contributors), special mention to [@elcuervo](https://github.com/elcuervo) for helping me maintain gpm and constantly pushing for great new features and code.
+This tool is inspired by Ruby's [dep gem](http://cyx.github.io/dep/) - authored by [@cyx](http://cyx.is/) and [@soveran](http://soveran.com/), big thanks to them and to all the contributions made by the many wonderful people in our [contributors page](https://github.com/pote/gpm/graphs/contributors).
+
+gpm is maintained by [@pote](https://github.com/pote) and [@elcuervo](https:/github.com/elcuervo).
 
 Go Package Manager evolved from [Johnny Deps](https://github.com/VividCortex/johnny-deps), a tool I wrote for internal use of Vivid Cortex and which is now maintained by the Vivid Cortex team.
