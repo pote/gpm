@@ -6,7 +6,7 @@ gpm is a minimalistic package manager for Go that leverages the power of the `go
 
 Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects.
 
-#### Go package versioning and vendoring in one simple gif using gpm + gvp:
+#### Go package versioning and vendoring with gpm + [gvp](https://github.com/pote/gvp) in one simple gif:
 
 ![gpm + gvp](./gpm_install.gif)
 
