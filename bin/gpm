@@ -72,7 +72,6 @@ case "${1:-"install"}" in
     usage
     ;;
   *)
-    usage
-    exit 1
+    (which "gpm-$1" > /dev/null && gpm-$1 $BASH_ARGV) || usage && exit 1
     ;;
 esac
