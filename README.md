@@ -58,6 +58,18 @@ It is recommended to keep a healthy and exhaustive `Godeps` file in the root of 
 this way any project includes the documentation required to be built correctly at any point in time.
 
 
+### Commands
+
+gpm has the following commands:
+
+```bash
+$ gpm             # Same as 'install'.
+$ gpm install     # Parses the Godeps file, installs dependencies and sets
+                  # them to the appropriate version.
+$ gpm version     # Outputs version information
+$ gpm help        # Prints this message
+```
+
 ### Contributing
 
 Lots of people have contributed to make gpm what it is today, if you want to take your time to play around
