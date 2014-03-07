@@ -42,7 +42,7 @@ github.com/replicon/fast-archiver         v1.02
 launchpad.net/gocheck                     r2013.03.03   # Bazaar repositories are supported
 code.google.com/p/go.example/hello/...    ae081cd1d6cc  # And so are Mercurial ones
 
-$ gpm
+$ gpm install
 >> Getting package github.com/nu7hatch/gotrail
 >> Getting package github.com/replicon/fast-archiver
 >> Getting package launchpad.net/gocheck
