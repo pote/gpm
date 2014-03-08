@@ -70,6 +70,20 @@ $ gpm version     # Outputs version information
 $ gpm help        # Prints this message
 ```
 
+### Plugins
+
+As of version [v1.1.1](https://github.com/pote/gpm/releases/tag/v1.1.1) gpm supports plugins, the intent of which is the ability to add powerful non-core features to gpm without compromising the complexity of its codebase. 
+
+The way gpm plugin works is simple: whenever an unknown command is passed into gpm it will look for an executable in your `$PATH` called `gpm-<command>` and if it exists it will run it while passing all extra arguments to it, simple yet powerful.
+
+This brings a lot to the table: plugins can be written in anything, they can be bash scripts like gpm, Go packages, ruby gems, python modules, anything the author feels comfortable with. I'm hoping for lots of gpm plugins to be developed, if you happen to write a plugin or know about one that is not mentioned here please bring it to my attention so I can add it to the list :)
+
+#### Known Plugins
+
+
+* [gpm-bootstrap](https://github.com/pote/gpm-bootstrap) - creates a `Godeps` file for a Go project by analyzing it's dependencies and their latest releases/revisions.
+
+
 ### Contributing
 
 Lots of people have contributed to make gpm what it is today, if you want to take your time to play around
