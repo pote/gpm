@@ -65,13 +65,20 @@ case "${1:-"install"}" in
     ;;
   "install")
     [[ -f "Godeps" ]] || (echo ">> Godeps file does not exist." && exit 1)
-    (which go > /dev/null) || ( echo ">> Go is currently not installed or in your PATH" && exit 1)
+    (which go > /dev/null) ||
+      ( echo ">> Go is currently not installed or in your PATH" && exit 1)
     set_dependencies
     ;;
   "help")
     usage
     ;;
   *)
-    (which "gpm-$1" > /dev/null && gpm-$1 $BASH_ARGV) || usage && exit 1
+    ## Support for Plugins: if command is unknown search for a gpm-command executable.
+    (which "gpm-$1" > /dev/null &&
+      plugin=$1 &&
+      shift     &&
+      gpm-$plugin $@ &&
+      exit
+    ) || usage && exit 1
     ;;
 esac
