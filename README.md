@@ -26,6 +26,18 @@ $ ./configure
 $ make install
 ```
 
+### Use directly from GitHub (suggested for CI servers)
+
+As gpm is a bash script you can always use it directly from GitHub via `wget` or `curl`, this is particularly useful for CI servers and other automated environments. 
+
+```bash
+## With wget
+$ wget -qO- https://raw.github.com/pote/gpm/v1.1.1/bin/gpm | bash
+
+## With cURL
+$ curl -s https://raw.github.com/pote/gpm/v1.1.1/bin/gpm | bash
+```
+
 ## The Godeps file
 
 `gpm` expects you to have a file called `Godeps` in the root of your Go application in the format `<import path> <tag/revision>`.
