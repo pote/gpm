@@ -38,6 +38,8 @@ $ wget -qO- https://raw.github.com/pote/gpm/v1.1.1/bin/gpm | bash
 $ curl -s https://raw.github.com/pote/gpm/v1.1.1/bin/gpm | bash
 ```
 
+**Note**: You can always use the version on master if you like to live dangerously by piping `https://raw.github.com/pote/gpm/master/bin/gpm` instead of `https://raw.github.com/pote/gpm/v1.1.1/bin/gpm`.
+
 ## The Godeps file
 
 `gpm` expects you to have a file called `Godeps` in the root of your Go application in the format `<import path> <tag/revision>`.
