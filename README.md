@@ -90,10 +90,25 @@ As of version [v1.1.1](https://github.com/pote/gpm/releases/tag/v1.1.1) gpm supp
 
 The way gpm plugin works is simple: whenever an unknown command is passed into gpm it will look for an executable in your `$PATH` called `gpm-<command>` and if it exists it will run it while passing all extra arguments to it, simple yet powerful.
 
-This brings a lot to the table: plugins can be written in anything, they can be bash scripts like gpm, Go packages, ruby gems, python modules, anything the author feels comfortable with. I'm hoping for lots of gpm plugins to be developed, if you happen to write a plugin or know about one that is not mentioned here please bring it to my attention so I can add it to the list :)
+This brings a lot to the table: plugins can be written in anything, they can be Go binaries, bash scripts, Ruby gems, Python packages, you name it. gpm wants to make it easy for you to extend it. :)
 
-#### Known Plugins
+#### Installing plugins through Homebrew
 
+I maintain a [repository with homebrew formulae for gpm plugins](https://github.com/pote/homebrew-gpm_plugins) that you can add to your system with the `brew tap` command:
+
+```bash
+$ brew tap pote/gpm_plugins
+```
+
+After you've done this you can install plugins as you would with any other homebrew packge.
+
+```bash
+$ brew install gpm-bootstrap
+```
+
+If you have written a gpm plugin and want it included please send a pull request to the repo! I'd love to get a healthy plugin ecosystem going. :) 
+
+#### Official Plugins
 
 * [gpm-bootstrap](https://github.com/pote/gpm-bootstrap) - creates a `Godeps` file for a Go project by analyzing it's dependencies and their latest releases/revisions.
 
