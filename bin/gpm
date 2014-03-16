@@ -43,8 +43,8 @@ set_dependencies() {
     (
       install_path="${GOPATH%%:*}/src/${package%%/...}"
       [[ -e "$install_path/.git/index.lock" ||
-      -e "$install_path/.hg/store/lock" ||
-      -e "$install_path/.bzr/checkout/lock" ]] && wait
+         -e "$install_path/.hg/store/lock"  ||
+         -e "$install_path/.bzr/checkout/lock" ]] && wait
       echo ">> Getting package "$package""
       go get -u -d "$package"
       echo ">> Setting $package to version $version"
