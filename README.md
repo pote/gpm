@@ -21,7 +21,7 @@ $ brew install gpm
 
 ```bash
 $ git clone https://github.com/pote/gpm.git && cd gpm
-$ git checkout v1.0.1 # You can ignore this part if you want to install HEAD.
+$ git checkout v1.1.1 # You can ignore this part if you want to install HEAD.
 $ ./configure
 $ make install
 ```
