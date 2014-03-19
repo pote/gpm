@@ -37,7 +37,7 @@ EOF
 # Iterates over Godep file dependencies and sets
 # the specified version on each of them.
 set_dependencies() {
-  deps=$(sed 's/#.*//;/^\s*$/d' < "Godeps") || echo ""
+  deps=$(sed 's/#.*//;/^\s*$/d' < $1) || echo ""
 
   while read package version; do
     (
@@ -64,10 +64,12 @@ case "${1:-"install"}" in
     echo ">> gpm v1.1.2"
     ;;
   "install")
-    [[ -f "Godeps" ]] || (echo ">> Godeps file does not exist." && exit 1)
+    deps_file="Godeps"
+    [[ "$#" -eq 2 ]] && [[ -n "$2" ]] && deps_file="$2"
+    [[ -f "$deps_file" ]] || (echo ">> $deps_file file does not exist." && exit 1)
     (which go > /dev/null) ||
       ( echo ">> Go is currently not installed or in your PATH" && exit 1)
-    set_dependencies
+    set_dependencies $deps_file
     ;;
   "help")
     usage
