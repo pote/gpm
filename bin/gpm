@@ -76,7 +76,7 @@ case "${1:-"install"}" in
     ;;
   *)
     ## Support for Plugins: if command is unknown search for a gpm-command executable.
-    (which "gpm-$1" > /dev/null &&
+    (command -v "gpm-$1" > /dev/null &&
       plugin=$1 &&
       shift     &&
       gpm-$plugin $@ &&
