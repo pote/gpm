@@ -52,6 +52,7 @@ set_dependencies() {
       [ -d .hg ]  && hg update    -q      "$version"
       [ -d .git ] && git checkout -q      "$version"
       [ -d .bzr ] && bzr revert   -q -r   "$version"
+      [ -d .svn ] && svn update   -r      "$version"
     ) &
   done < <(echo "$deps")
   wait
