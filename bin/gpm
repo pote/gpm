@@ -62,7 +62,7 @@ set_dependencies() {
 ## /Functions
 case "${1:-"install"}" in
   "version")
-    echo ">> gpm v1.1.2"
+    echo ">> gpm v1.2.0"
     ;;
   "install")
     deps_file="Godeps"
