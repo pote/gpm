@@ -77,11 +77,14 @@ case "${1:-"install"}" in
     ;;
   *)
     ## Support for Plugins: if command is unknown search for a gpm-command executable.
-    (command -v "gpm-$1" > /dev/null &&
+    if command -v "gpm-$1" > /dev/null
+    then
       plugin=$1 &&
       shift     &&
       gpm-$plugin $@ &&
       exit
-    ) || usage && exit 1
+    else
+      usage && exit 1
+    fi
     ;;
 esac
