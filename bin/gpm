@@ -37,16 +37,18 @@ EOF
 # Iterates over Godep file dependencies and sets
 # the specified version on each of them.
 set_dependencies() {
-  deps=$(sed 's/#.*//;/^\s*$/d' < $1) || echo ""
+  local deps=$(sed 's/#.*//;/^\s*$/d' < $1) || echo ""
 
   while read package version; do
     (
-      install_path="${GOPATH%%:*}/src/${package%%/...}"
+      local install_path="${GOPATH%%:*}/src/${package%%/...}"
       [[ -e "$install_path/.git/index.lock" ||
          -e "$install_path/.hg/store/lock"  ||
          -e "$install_path/.bzr/checkout/lock" ]] && wait
+
       echo ">> Getting package "$package""
       go get -u -d "$package"
+
       echo ">> Setting $package to version $version"
       cd $install_path
       [ -d .hg ]  && hg update    -q      "$version"
@@ -58,8 +60,9 @@ set_dependencies() {
   wait
   echo ">> All Done"
 }
-
 ## /Functions
+
+## Command Line Parsing
 case "${1:-"install"}" in
   "version")
     echo ">> gpm v1.2.1"
