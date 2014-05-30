@@ -1,7 +1,7 @@
 # Go Package Manager [![Build Status](https://travis-ci.org/pote/gpm.png?branch=master)](https://travis-ci.org/pote/gpm)
 
 <div align="center">
-  <img src="http://f.cl.ly/items/1q0h383Y17122k3s3Z0v/gpm.png">
+  <img src="./gpm_logo.png">
 </div>
 
 gpm is a minimalistic package manager for Go that leverages the power of the `go get` command and the underlying version control systems used by it to set your Go dependencies to desired versions, thus allowing easily reproducible builds in your Go projects.
