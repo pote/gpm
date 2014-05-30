@@ -116,7 +116,7 @@ If you have written a gpm plugin and want it included please send a pull request
 
 ### Further Reading
 
-The creator for the [gpm-git](https://github.com/technosophos/gpm-git) and [gpm-local](https://github.com/technosophos/gpm-local) wrote a [fantastic blog post explaining the usage of rationale](http://technosophos.com/2014/05/29/why-gpm-is-the-right-go-package-manager.html) of gpm and [gvp](https://github.com/pote/gvp), it sums up explanations for several of the design decisions behind both tools. 
+The creator for the [gpm-git](https://github.com/technosophos/gpm-git) and [gpm-local](https://github.com/technosophos/gpm-local) wrote a [fantastic blog post explaining the usage and rationale](http://technosophos.com/2014/05/29/why-gpm-is-the-right-go-package-manager.html) of gpm and [gvp](https://github.com/pote/gvp), it sums up explanations for several of the design decisions behind both tools. 
 
 ### Contributing
 
