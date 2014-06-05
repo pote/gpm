@@ -46,13 +46,18 @@ set_dependencies() {
   while read package version; do
     (
       local install_path="${GOPATH%%:*}/src/${package%%/...}"
-      is_in_use $install_path && wait
-
       echo ">> Getting package "$package""
-      while true; do go get -u -d "$package" 2> /dev/null && break; done
+
+      # Retries in case of possible race conditions when installing a package
+      # dependency
+      for ((i=0; i<5; i++)); do
+        out=$(go get -u -d "$package" 2>&1 >/dev/null) && break
+      done
+      [[ $? != 0 ]] && echo "-- Failed to get "$package", error: " && echo "$out" && exit 1
 
       echo ">> Setting $package to version $version"
       cd $install_path
+      is_in_use $install_path && wait
 
       [ -d .hg  ] && hg update    -q      "$version"
       [ -d .git ] && git checkout -q      "$version"
