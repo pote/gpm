@@ -34,6 +34,10 @@ USAGE
 EOF
 }
 
+is_in_use() {
+  [[ -e "$1/.git/index.lock" || -e "$1/.hg/store/lock"  || -e "$1/.bzr/checkout/lock" ]]
+}
+
 # Iterates over Godep file dependencies and sets
 # the specified version on each of them.
 set_dependencies() {
@@ -42,16 +46,20 @@ set_dependencies() {
   while read package version; do
     (
       local install_path="${GOPATH%%:*}/src/${package%%/...}"
-      [[ -e "$install_path/.git/index.lock" ||
-         -e "$install_path/.hg/store/lock"  ||
-         -e "$install_path/.bzr/checkout/lock" ]] && wait
-
       echo ">> Getting package "$package""
-      go get -u -d "$package"
+
+      # Retries in case of possible race conditions when installing a package
+      # dependency
+      for ((i=0; i<5; i++)); do
+        out=$(go get -u -d "$package" 2>&1 >/dev/null) && break
+      done
+      [[ $? != 0 ]] && echo "-- Failed to get "$package", error: " && echo "$out" && exit 1
 
       echo ">> Setting $package to version $version"
       cd $install_path
-      [ -d .hg ]  && hg update    -q      "$version"
+      is_in_use $install_path && wait
+
+      [ -d .hg  ] && hg update    -q      "$version"
       [ -d .git ] && git checkout -q      "$version"
       [ -d .bzr ] && bzr revert   -q -r   "$version"
       [ -d .svn ] && svn update   -r      "$version"
