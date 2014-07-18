@@ -45,7 +45,8 @@ set_dependencies() {
 
   while read package version; do
     (
-      local install_path="${GOPATH%%:*}/src/${package%%/...}"
+      local pkg_path=$(echo "$package" | awk -F/ '{print $1"/"$2"/"$3}')
+      local install_path="${GOPATH%%:*}/src/${pkg_path%%/...}"
       echo ">> Getting package "$package""
 
       # Retries in case of possible race conditions when installing a package
