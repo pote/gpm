@@ -95,6 +95,7 @@ case "${1:-"install"}" in
       gpm-$plugin $@ &&
       exit
     else
+      echo ">> No command 'gpm $1'"
       usage && exit 1
     fi
     ;;
