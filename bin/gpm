@@ -23,7 +23,7 @@ SYNOPSIS
 
     gpm has a companion tool, called [gvp](https://github.com/pote/gvp) which
     provides vendoring functionalities, it alters your GOPATH so every project
-    has its own isolated dependency directory, it's usage is recommended.
+    has its own isolated dependency directory, its usage is recommended.
 
 USAGE
       $ gpm             # Same as 'install'.
