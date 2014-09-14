@@ -48,6 +48,10 @@ $ curl -s https://raw.githubusercontent.com/pote/gpm/v1.2.3/bin/gpm | bash
 
 Once this file is in place, running the `gpm` tool will download those packages and check out the specified versions.
 
+#### Packages
+
+You can specify packages with the `<import path> <version>` format, where `version` can be a revision number (a git/bazaar/mercurial/svn revision hash) or a tag.
+
 ```bash
 $ ls .
 Godeps  foo.go  foo_test.go
@@ -58,21 +62,33 @@ github.com/replicon/fast-archiver         v1.02
 launchpad.net/gocheck                     r2013.03.03   # Bazaar repositories are supported
 code.google.com/p/go.example/hello/...    ae081cd1d6cc  # And so are Mercurial ones
 
-$ gpm install
->> Getting package github.com/nu7hatch/gotrail
->> Getting package github.com/replicon/fast-archiver
->> Getting package launchpad.net/gocheck
->> Getting package code.google.com/p/go.example/hello/...
->> Setting github.com/nu7hatch/gotrail to version v0.0.2
->> Setting github.com/replicon/fast-archiver to version v1.02
->> Setting code.google.com/p/go.example/hello/... to version ae081cd1d6cc
->> Setting launchpad.net/gocheck to version r2013.03.03
->> All Done
+
 ```
 
-It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies,
-this way any project includes the documentation required to be built correctly at any point in time.
 
+#### Comments
+
+The Godeps file accepts comments using a `#` symbol. Everything to the right of a `#` will be
+ignored by gpm, as well as empty lines.
+
+
+#### Extensibility
+
+As a convention comments can be used to specify lines that gpm core should ignore but are instead intended to affect how a given [gpm plugin]() behaves.
+
+For example: a hypotetical `gpm-track` plugin that makes sure a given package is always updated to its last possible version would leverage a line like this one:
+
+```bash
+#[gpm-track] github.com/nu7hatch/gotrail
+```
+
+This convention makes the Godeps file format extensible, just as with plugins this can help identify common needs that might later on be merged into core without having to sacrifice code simplicity in order to explore new features.
+
+#### Completeness
+
+It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies, remember every package that you add to the Godeps file will be installed along with its dependencies when gpm runs `go get` on it, so if you don't include these dependencies in your Godeps file you are losing the ability to reproduce a build with 100% reliability.
+
+Make sure your Godeps file is exhaustive, this way any project includes the documentation required to be built reliably at any point in time.
 
 ### Commands
 
