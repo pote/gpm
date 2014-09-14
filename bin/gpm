@@ -49,20 +49,22 @@ set_dependencies() {
       local install_path="${GOPATH%%:*}/src/${pkg_path%%/...}"
       echo ">> Getting package "$package""
 
-      # Retries in case of possible race conditions when installing a package
-      # dependency
-      for ((i=0; i<5; i++)); do
-        out=$(go get -u -d "$package" 2>&1 >/dev/null) && break
-      done
-      [[ $? != 0 ]] && echo "-- Failed to get "$package", error: " && echo "$out" && exit 1
+      go get -u -d "$package"
+    ) &
+  done < <(echo "$deps")
+  wait
 
+  while read package version; do
+    (
+      local pkg_path=$(echo "$package" | awk -F/ '{print $1"/"$2"/"$3}')
+      local install_path="${GOPATH%%:*}/src/${pkg_path%%/...}"
       echo ">> Setting $package to version $version"
       cd $install_path
       is_in_use $install_path && wait
 
-      [ -d .hg  ] && hg update    -q      "$version"
-      [ -d .git ] && git checkout -q      "$version"
       [ -d .bzr ] && bzr revert   -q -r   "$version"
+      [ -d .git ] && git checkout -q      "$version"
+      [ -d .hg  ] && hg update    -q      "$version"
       [ -d .svn ] && svn update   -r      "$version"
     ) &
   done < <(echo "$deps")
