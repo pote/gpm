@@ -74,7 +74,7 @@ ignored by gpm, as well as empty lines.
 
 #### Extensibility
 
-As a convention comments can be used to specify lines that gpm core should ignore but are instead intended to affect how a given [gpm plugin]() behaves.
+As a convention comments can be used to specify lines that gpm core should ignore but are instead intended to affect how a given [gpm plugin](#plugins) behaves.
 
 For example: a hypotetical `gpm-track` plugin that makes sure a given package is always updated to its last possible version would leverage a line like this one:
 
