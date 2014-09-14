@@ -4,14 +4,13 @@
   <img src="./gpm_logo.png">
 </div>
 
-gpm is a minimalistic package manager for Go that leverages the power of the `go get` command and the underlying version control systems used by it to set your Go dependencies to desired versions, thus allowing easily reproducible builds in your Go projects.
+gpm is a minimalist package manager for Go that leverages the power of the `go get` command and the underlying version control systems used by it to set your Go dependencies to desired versions, thus allowing easily reproducible builds in your Go projects.
 
 Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects.
 
 #### Go package versioning and vendoring with gpm + [gvp](https://github.com/pote/gvp) in one simple gif:
 
 ![gpm + gvp](./gpm_install.gif)
-
 
 ### Install in OSX with Homebrew
 
@@ -124,15 +123,36 @@ After you've done this you can install plugins as you would with any other homeb
 $ brew install gpm-bootstrap
 ```
 
-If you have written a gpm plugin and want it included please send a pull request to the repo! I'd love to get a healthy plugin ecosystem going. :)
+#### Known Plugins
 
-#### Official Plugins
+If you have written a gpm plugin and want it included please send a pull request to the repo! I love how people have taken to explore possible features using plugins so if you've written one there is about a 99% chance I will include it here. :)
 
-* [gpm-bootstrap](https://github.com/pote/gpm-bootstrap) - creates a `Godeps` file for a Go project by analyzing it's dependencies and their latest releases/revisions.
+| Name and Link                   | Author                               | Short Description                 | Type        |
+|:-------------------------------:|:------------------------------------:|:----------------------------------|:-----------:|
+| [gpm-bootstrap][plugin-boot]    | [pote][author-pote]                  | Creates an initial Godeps file    | official    |
+| [gpm-git][plugin-git]           | [technosophos][author-technosophos]  | Git management helpers            | third party |
+| [gpm-link][plugin-link]         | [elcuervo][author-elcuervo]          | Dependency vendoring              | third party |
+| [gpm-local][plugin-local]       | [technosophos][author-technosophos]  | Usage of local paths for packages | third party |
+| [gpm-prebuild][plugin-prebuild] | [technosophos][author-technosophos]  | Improves building performance     | third party |
+| [gpm-all][plugin-all]           | [pote][author-pote]                  | Installs multiple sets of deps    | official    |
+
+There is no real difference on official/third party plugins other than the willingness of the gpm core team to support each, plugins labeled as third party will be supported (or not) by their authors.
+
+[plugin-boot]: https://github.com/pote/gpm-bootstrap
+[plugin-git]: https://github.com/technosophos/gpm-git
+[plugin-link]: https://github.com/elcuervo/gpm-link
+[plugin-local]: https://github.com/technosophos/gpm-local
+[plugin-prebuild]: https://github.com/technosophos/gpm-prebuild
+[plugin-all]: https://github.com/pote/gpm-all
+
+[author-pote]: https://github.com/pote
+[author-technosophos]: https://github.com/technosophos
+[author-elcuervo]: https://github.com/elcuervo
+
 
 ### Further Reading
 
-The creator for the [gpm-git](https://github.com/technosophos/gpm-git) and [gpm-local](https://github.com/technosophos/gpm-local) wrote a [fantastic blog post explaining the usage and rationale](http://technosophos.com/2014/05/29/why-gpm-is-the-right-go-package-manager.html) of gpm and [gvp](https://github.com/pote/gvp), it sums up explanations for several of the design decisions behind both tools. 
+The creator for the [gpm-git](https://github.com/technosophos/gpm-git) and [gpm-local](https://github.com/technosophos/gpm-local) wrote a [fantastic blog post explaining the usage and rationale](http://technosophos.com/2014/05/29/why-gpm-is-the-right-go-package-manager.html) of gpm and [gvp](https://github.com/pote/gvp), it sums up explanations for several of the design decisions behind both tools.
 
 ### Contributing
 
