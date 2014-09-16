@@ -1,0 +1,13 @@
+# Git repos
+github.com/nu7hatch/gotrail               v0.0.2
+github.com/replicon/fast-archiver         v1.02
+
+# Subpackages
+github.com/garyburd/redigo/redis          a6a0a737c00caf4d4c2bb589941ace0d688168bb
+
+# Bazaar Repo
+launchpad.net/gocheck                     r2013.03.03
+
+# Mercurial Repo
+code.google.com/p/go.example/hello/...    ae081cd1d6cc
+
