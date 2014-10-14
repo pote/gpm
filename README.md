@@ -83,6 +83,19 @@ For example: a hypotetical `gpm-track` plugin that makes sure a given package is
 
 This convention makes the Godeps file format extensible, just as with plugins this can help identify common needs that might later on be merged into core without having to sacrifice code simplicity in order to explore new features.
 
+#### Private Repos
+
+Both gpm and `go get` support using private GitHub repositories! Here's what you need to do in order for a specific machine to be able to access them:
+
+* Generate a GitHub OAuth token by following [these instructions](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
+* Add the following line to the `~/.netrc` file in your home directory.
+
+```bash
+machine github.com login <token>
+```
+
+You can now use gpm (and `go get`) to install private repositories to which your user has access! :)
+
 #### Completeness
 
 It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies, remember every package that you add to the Godeps file will be installed along with its dependencies when gpm runs `go get` on it, so if you don't include these dependencies in your Godeps file you are losing the ability to reproduce a build with 100% reliability.
