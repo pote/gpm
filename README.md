@@ -87,7 +87,7 @@ This convention makes the Godeps file format extensible, just as with plugins th
 
 Both gpm and `go get` support using private GitHub repositories! Here's what you need to do in order for a specific machine to be able to access them:
 
-* Generate a GitHub OAuth token by following [these instructions](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
+* Generate a GitHub access token by following [these instructions](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
 * Add the following line to the `~/.netrc` file in your home directory.
 
 ```bash
