@@ -148,6 +148,7 @@ If you have written a gpm plugin and want it included please send a pull request
 | [gpm-local][plugin-local]       | [technosophos][author-technosophos]  | Usage of local paths for packages | third party |
 | [gpm-prebuild][plugin-prebuild] | [technosophos][author-technosophos]  | Improves building performance     | third party |
 | [gpm-all][plugin-all]           | [pote][author-pote]                  | Installs multiple sets of deps    | official    |
+| [gpm-lock][plugin-lock]         | [zeeyang][author-zeeyang]            | Lock down dependency versions     | third party |
 
 There is no real difference on official/third party plugins other than the willingness of the gpm core team to support each, plugins labeled as third party will be supported (or not) by their authors.
 
@@ -157,10 +158,12 @@ There is no real difference on official/third party plugins other than the willi
 [plugin-local]: https://github.com/technosophos/gpm-local
 [plugin-prebuild]: https://github.com/technosophos/gpm-prebuild
 [plugin-all]: https://github.com/pote/gpm-all
+[plugin-lock]: https://github.com/zeeyang/gpm-lock
 
 [author-pote]: https://github.com/pote
 [author-technosophos]: https://github.com/technosophos
 [author-elcuervo]: https://github.com/elcuervo
+[author-zeeyang]: https://github.com/zeeyang
 
 
 ### Further Reading
