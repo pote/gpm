@@ -38,6 +38,13 @@ is_in_use() {
   [[ -e "$1/.git/index.lock" || -e "$1/.hg/store/lock"  || -e "$1/.bzr/checkout/lock" ]]
 }
 
+# Exit with an error message to stderr. An optional second argument sets the
+# exit status (defaults to `1`).
+abort() {
+	echo "$1" >&2;
+	exit ${2:-1};
+}
+
 # Iterates over Godep file dependencies and sets
 # the specified version on each of them.
 set_dependencies() {
@@ -77,9 +84,9 @@ case "${1:-"install"}" in
     ;;
   "install")
     deps_file="${2:-"Godeps"}"
-    [[ -r "$deps_file" ]] || (echo ">> $deps_file file does not exist." && exit 1)
+    [[ -r "$deps_file" ]] || abort ">> $deps_file file does not exist."
     (which go > /dev/null) ||
-      ( echo ">> Go is currently not installed or in your PATH" && exit 1)
+      abort ">> Go is currently not installed or in your PATH"
     set_dependencies $deps_file
     ;;
   "help")
@@ -94,7 +101,7 @@ case "${1:-"install"}" in
       gpm-$plugin $@ &&
       exit
     else
-      echo ">> No command 'gpm $1'"
+      echo ">> No command 'gpm $1'" >&2
       usage && exit 1
     fi
     ;;
