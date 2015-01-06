@@ -87,6 +87,7 @@ case "${1:-"install"}" in
     [[ -r "$deps_file" ]] || abort ">> $deps_file file does not exist."
     (which go > /dev/null) ||
       abort ">> Go is currently not installed or in your PATH"
+    [ -z "${GOPATH:-}" ] && abort ">> GOPATH is not set"
     set_dependencies $deps_file
     ;;
   "help")
