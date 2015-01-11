@@ -73,6 +73,12 @@ set_dependencies() {
     ) &
   done < <(echo "$deps")
   wait
+
+  while read package version; do
+    echo ">> Building package "$package""
+    go install "$package"
+  done < <(echo "$deps")
+
   echo ">> All Done"
 }
 ## /Functions
