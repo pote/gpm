@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
 prefix=/usr/local
+exec=gpm
 
 usage()
 {
-    echo "Usage: configure [-h|--help] [--prefix=prefix]"
+    echo "Usage: configure [-h|--help] [--prefix=prefix] [--exec=exec]
+    "
 }
 
 while [ "$1" != "" ]; do
@@ -15,6 +17,9 @@ while [ "$1" != "" ]; do
         --prefix)
             shift
             prefix=$1
+            ;;
+        --exec=*)
+            exec=${1#--exec=}
             ;;
         -h|--help)
             usage
@@ -33,10 +38,12 @@ done
 cat <<EOF
 configuring godeps...
 prefix=$prefix
+exec=$exec
 >> config.make
 EOF
 
 cat > ./config.make <<EOF
 SUBDIRS=
 prefix=$prefix
+exec=$exec
 EOF
