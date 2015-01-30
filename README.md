@@ -22,7 +22,7 @@ $ brew install gpm
 
 ```bash
 $ git clone https://github.com/pote/gpm.git && cd gpm
-$ git checkout v1.3.1 # You can ignore this part if you want to install HEAD.
+$ git checkout v1.3.2 # You can ignore this part if you want to install HEAD.
 $ ./configure
 $ make install
 ```
@@ -33,10 +33,10 @@ As gpm is a bash script you can always use it directly from GitHub via `wget` or
 
 ```bash
 ## With wget
-$ wget -qO- https://raw.githubusercontent.com/pote/gpm/v1.3.1/bin/gpm | bash
+$ wget -qO- https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm | bash
 
 ## With cURL
-$ curl -s https://raw.githubusercontent.com/pote/gpm/v1.3.1/bin/gpm | bash
+$ curl -s https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm | bash
 ```
 
 **Note**: You can always use the version on master if you like to live dangerously by piping `https://raw.githubusercontent.com/pote/gpm/master/bin/gpm` instead of `https://raw.githubusercontent.com/pote/gpm/v1.3.1/bin/gpm`.
