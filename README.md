@@ -12,13 +12,25 @@ Go Package Manager makes no assumptions about your dependencies and supports Git
 
 ![gpm + gvp](./gpm_install.gif)
 
-### Install in OSX with Homebrew
+
+## Installation options
+
+### In OSX with Homebrew
 
 ```bash
 $ brew install gpm
 ```
 
-### Install manually on *nix
+### Manually with a one-liner
+
+Latest stable release:
+
+```bash
+$ wget https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
+```
+
+
+### Manually on *nix
 
 ```bash
 $ git clone https://github.com/pote/gpm.git && cd gpm
@@ -38,8 +50,6 @@ $ wget -qO- https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm | bash
 ## With cURL
 $ curl -s https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm | bash
 ```
-
-**Note**: You can always use the version on master if you like to live dangerously by piping `https://raw.githubusercontent.com/pote/gpm/master/bin/gpm` instead of `https://raw.githubusercontent.com/pote/gpm/v1.3.1/bin/gpm`.
 
 ## The Godeps file
 
