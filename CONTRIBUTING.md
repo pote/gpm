@@ -1,3 +1,5 @@
+The Soveran Contribution Guidelines.
+
 This code tries to solve a particular problem with a very simple
 implementation. We try to keep the code to a minimum while making
 it as clear as possible. The design is very likely finished, and
