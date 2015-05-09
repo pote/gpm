@@ -1,17 +1,16 @@
-# Go Package Manager [![Build Status](https://travis-ci.org/pote/gpm.png?branch=master)](https://travis-ci.org/pote/gpm) [![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.svg)](https://gratipay.com/pote/)
-
-<div align="center">
-  <img src="./gpm_logo.png">
-</div>
+# Go Package Manager [![Build Status](https://travis-ci.org/pote/gpm.png?branch=master)](https://travis-ci.org/pote/gpm)
 
 gpm is a minimalist package manager for Go that leverages the power of the `go get` command and the underlying version control systems used by it to set your Go dependencies to desired versions, thus allowing easily reproducible builds in your Go projects.
 
 Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects.
 
-#### Go package versioning and vendoring with gpm + [gvp](https://github.com/pote/gvp) in one simple gif:
+<div align="center">
+  <img src="./gpm_logo.png">
+</div>
+
+#### gpm + [gvp](https://github.com/pote/gvp) sample usage:
 
 ![gpm + gvp](./gpm_install.gif)
-
 
 ## Installation options
 
