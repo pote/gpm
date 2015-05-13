@@ -34,10 +34,6 @@ USAGE
 EOF
 }
 
-is_in_use() {
-  [[ -e "$1/.git/index.lock" || -e "$1/.hg/store/lock"  || -e "$1/.bzr/checkout/lock" ]]
-}
-
 # Exit with an error message to stderr. An optional second argument sets the
 # exit status (defaults to `1`).
 abort() {
@@ -64,15 +60,13 @@ set_dependencies() {
       local install_path="${GOPATH%%:*}/src/${pkg_path%%/...}"
       echo ">> Setting $package to version $version"
       cd "$install_path"
-      is_in_use $install_path && wait
 
       [ -d .bzr ] && bzr revert   -q -r   "$version"
       [ -d .git ] && git checkout -q      "$version"
       [ -d .hg  ] && hg update    -q      "$version"
       [ -d .svn ] && svn update   -r      "$version"
-    ) &
+    )
   done < <(echo "$deps")
-  wait
 
   while read package version; do
     echo ">> Building package "$package""
