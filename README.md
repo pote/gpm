@@ -117,6 +117,8 @@ gpm has the following commands:
 
 ```bash
 $ gpm             # Same as 'install'.
+$ gpm get         # Parses the Godeps file, gets dependencies and sets them
+                  # to the appropriate version but does not install them.
 $ gpm install     # Parses the Godeps file, installs dependencies and sets
                   # them to the appropriate version.
 $ gpm version     # Outputs version information
