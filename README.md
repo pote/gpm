@@ -20,6 +20,13 @@ Go Package Manager makes no assumptions about your dependencies and supports Git
 $ brew install gpm
 ```
 
+### In Arch Linux - AUR
+
+```bash
+$ yaourt -S go-gpm
+```
+Caveat: you'll use `go-gpm` instead of just `gpm` in the command line, as there is a general purpose linux package under that name already.
+
 ### Manually with a one-liner
 
 Latest stable release:
@@ -27,7 +34,6 @@ Latest stable release:
 ```bash
 $ wget https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
 ```
-
 
 ### Manually on *nix
 
@@ -38,7 +44,7 @@ $ ./configure
 $ make install
 ```
 
-### Use directly from GitHub (suggested for CI servers)
+### Use directly from GitHub
 
 As gpm is a bash script you can always use it directly from GitHub via `wget` or `curl`, this is particularly useful for CI servers and other automated environments.
 
