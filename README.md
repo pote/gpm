@@ -25,6 +25,12 @@ $ brew install gpm
 ```bash
 $ yaourt -S go-gpm
 ```
+or
+
+```bash
+$ packer -S go-gpm
+```
+
 Caveat: you'll use `go-gpm` instead of just `gpm` in the command line, as there is a general purpose linux package under that name already.
 
 ### Manually with a one-liner
