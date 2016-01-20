@@ -26,11 +26,11 @@ SYNOPSIS
     has its own isolated dependency directory, its usage is recommended.
 
 USAGE
-      $ gpm             # Same as 'install'.
+      $ gpm             # Same as 'gpm get'.
       $ gpm get         # Parses the Godeps file, gets dependencies and sets them
-                        # to the appropriate version but does not install them. 
-      $ gpm install     # Parses the Godeps file, installs dependencies and sets
-                        # them to the appropriate version.
+                        # to the appropriate version but does not install them.
+      $ gpm install     # Parses the Godeps file, installs dependencies, sets
+                        # them to the appropriate version and precompiles/installs them.
       $ gpm version     # Outputs version information
       $ gpm help        # Prints this message
 EOF
@@ -97,9 +97,9 @@ install_dependencies() {
 ## /Functions
 
 ## Command Line Parsing
-case "${1:-"install"}" in
+case "${1:-"get"}" in
   "version")
-    echo ">> gpm v1.3.2"
+    echo ">> gpm v1.4.0"
     ;;
   "install")
     (get_dependencies "${2:-"Godeps"}" | install_dependencies) 3>&1

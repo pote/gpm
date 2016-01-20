@@ -38,14 +38,14 @@ Caveat: you'll use `go-gpm` instead of just `gpm` in the command line, as there 
 Latest stable release:
 
 ```bash
-$ wget https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
+$ wget https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
 ```
 
 ### Manually on *nix
 
 ```bash
 $ git clone https://github.com/pote/gpm.git && cd gpm
-$ git checkout v1.3.2 # You can ignore this part if you want to install HEAD.
+$ git checkout v1.4.0 # You can ignore this part if you want to install HEAD.
 $ ./configure
 $ make install
 ```
@@ -56,10 +56,10 @@ As gpm is a bash script you can always use it directly from GitHub via `wget` or
 
 ```bash
 ## With wget
-$ wget -qO- https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm | bash
+$ wget -qO- https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm | bash
 
 ## With cURL
-$ curl -s https://raw.githubusercontent.com/pote/gpm/v1.3.2/bin/gpm | bash
+$ curl -s https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm | bash
 ```
 
 ## The Godeps file
