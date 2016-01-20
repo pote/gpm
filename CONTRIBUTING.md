@@ -1,5 +1,4 @@
-### The Soveran Contribution Guidelines.
-(taken from some project at https://github.com/soveran)
+## The [Soveran](https://github.com/soveran) Contribution Guidelines.
 
 This code tries to solve a particular problem with a very simple
 implementation. We try to keep the code to a minimum while making
