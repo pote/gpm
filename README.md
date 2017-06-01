@@ -1,16 +1,20 @@
 # Go Package Manager [![Build Status](https://travis-ci.org/pote/gpm.png?branch=master)](https://travis-ci.org/pote/gpm)
 
-gpm is a minimalist package manager for Go that leverages the power of the `go get` command and the underlying version control systems used by it to set your Go dependencies to desired versions, thus allowing easily reproducible builds in your Go projects.
+Go Package Manager (or gpm, for short) is a tool that helps achieve reproducible builds for Go applications by specifying the revision of each external Go package that the application depends on.
 
-Go Package Manager makes no assumptions about your dependencies and supports Git, Bazaar and Mercurial hosted Go packages, for a smoother workflow be sure to check out [gvp](https://github.com/pote/gvp) - the Go Versioning Packager which  provides dependency isolation for your projects.
+Being simple and unobstrusive are some of the most important design choices for gpm: `go get` already provides a way to fetch dependencies, and relies on versions control systems like Git to do it, gpm adds the additional step of setting each dependency repo to the desired revision, neither Go or your application even know about any of this happening, it just works.
 
-<div align="center">
-  <img src="./gpm_logo.png">
-</div>
+To achieve this, gpm uses a manifest file which is assumed to be called `Godeps` (although you can name it however you want), running gpm fetches all dependencies and ensures each is set to a specified version, down to revision level.
 
-#### gpm + [gvp](https://github.com/pote/gvp) sample usage:
+## Basic usage
 
-![gpm + gvp](./gpm_install.gif)
+For a given project, running `gpm` in the directory containing the `Godeps` file is enough to make sure dependencies in the file are fetched and set to the correct revision.
+
+However, if you share your `GOPATH` with other projects running gpm each time can get old, my solution for that is to isolate dependencies by manipulating the `GOPATH`.
+
+You can see gpm in action under this workflow in the following gif:
+
+![sample gpm usage](./gpm.gif)
 
 ## Installation options
 
@@ -41,7 +45,7 @@ Latest stable release:
 $ wget https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
 ```
 
-### Manually on *nix
+### Manually on *nix using the makefile.
 
 ```bash
 $ git clone https://github.com/pote/gpm.git && cd gpm
@@ -81,16 +85,14 @@ github.com/nu7hatch/gotrail               v0.0.2
 github.com/replicon/fast-archiver         v1.02
 launchpad.net/gocheck                     r2013.03.03   # Bazaar repositories are supported
 code.google.com/p/go.example/hello/...    ae081cd1d6cc  # And so are Mercurial ones
-
-
 ```
 
+When specifying your dependencies please keep in mind how gpm and the go tool operate: importing a package is setting the version of a cloned repo to a specific revision, so if you are importing several subpackages that are hosted under the same repo only one of them (the top level) should be specified in your Godeps file, in cases where there are no Go packages in the root of the dependency repository you can get Go to fetch the code anyway by appending `/...` to the import path (see last line in the example above)
 
 #### Comments
 
 The Godeps file accepts comments using a `#` symbol. Everything to the right of a `#` will be
 ignored by gpm, as well as empty lines.
-
 
 #### Extensibility
 
@@ -119,9 +121,9 @@ You can now use gpm (and `go get`) to install private repositories to which your
 
 #### Completeness
 
-It is recommended to keep a healthy and exhaustive `Godeps` file in the root of all Go project that use external dependencies, remember every package that you add to the Godeps file will be installed along with its dependencies when gpm runs `go get` on it, so if you don't include these dependencies in your Godeps file you are losing the ability to reproduce a build with 100% reliability.
+Any dependency not specified in the `Godeps` file will be installed by the Go tool to whatever revision the master branch of its hosting repository is pointing at that given moment, as reproducibility is the main goal of gpm it is suggested to be exhaustive and list all your dependencies in the file, with a specific revision.
 
-Make sure your Godeps file is exhaustive, this way any project includes the documentation required to be built reliably at any point in time.
+Do it once, reproduce it anytime, it pays off.
 
 ### Commands
 
@@ -191,7 +193,7 @@ There is no real difference on official/third party plugins other than the willi
 
 ### Further Reading
 
-The creator for the [gpm-git](https://github.com/technosophos/gpm-git) and [gpm-local](https://github.com/technosophos/gpm-local) wrote a [fantastic blog post explaining the usage and rationale](http://technosophos.com/2014/05/29/why-gpm-is-the-right-go-package-manager.html) of gpm and [gvp](https://github.com/pote/gvp), it sums up explanations for several of the design decisions behind both tools.
+The creator for the [gpm-git](https://github.com/technosophos/gpm-git) and [gpm-local](https://github.com/technosophos/gpm-local) and an alternative package manager called [Glide](https://github.com/masterminds/glide) wrote a [fantastic blog post explaining the usage and rationale](http://technosophos.com/2014/05/29/why-gpm-is-the-right-go-package-manager.html) of gpm, it sums up explanations for several of the design decisions behind both tools.
 
 ### Contributing
 
@@ -216,5 +218,3 @@ Released under MIT License, check LICENSE file for details.
 This tool is inspired by Ruby's [dep gem](http://cyx.github.io/dep/) - authored by [@cyx](http://cyx.is/) and [@soveran](http://soveran.com/), big thanks to them and to all the contributions made by the many wonderful people in our [contributors page](https://github.com/pote/gpm/graphs/contributors).
 
 gpm is maintained by [@pote](https://github.com/pote) and [@elcuervo](https:/github.com/elcuervo).
-
-Go Package Manager evolved from [Johnny Deps](https://github.com/VividCortex/johnny-deps), a tool I wrote for internal use of Vivid Cortex and which is now maintained by the Vivid Cortex team.
