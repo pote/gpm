@@ -10,7 +10,7 @@ To achieve this, gpm uses a manifest file which is assumed to be called `Godeps`
 
 For a given project, running `gpm` in the directory containing the `Godeps` file is enough to make sure dependencies in the file are fetched and set to the correct revision.
 
-However, if you share your `GOPATH` with other projects running gpm each time can get old, my solution for that is to isolate dependencies by manipulating the `GOPATH`.
+However, if you share your `GOPATH` with other projects running gpm each time can get old, my solution for that is to isolate dependencies by manipulating the `GOPATH`, see the [workspaces](#workspaces) section for details.
 
 You can see gpm in action under this workflow in the following gif:
 
@@ -190,6 +190,20 @@ There is no real difference on official/third party plugins other than the willi
 [author-elcuervo]: https://github.com/elcuervo
 [author-zeeyang]: https://github.com/zeeyang
 
+
+## Workspaces
+
+A question that comes up time and time again is how to handle different workspaces for Go projects.
+
+This question has many answers, and gpm should be compatible with most of them. My personal way to solve it is to have an environment file per project, which I use to manipulate the GOPATH whenever I switch to a given project.
+
+```bash
+$ cd my_project
+$ cat .env
+export GOPATH="$PWD"/.dependencies:"$PWD"
+$ source .env
+```
+After sourcing the env file (in which I usually keep other project-specific configuration variables, like database urls, secret keys, etc) the active GOPATH is a local one: this means that I don't need to run gpm again to make sure my dependencies are in the correct version and there is no danger of conflicting dependency versions across different projects. Everything is isolated and can be easily wiped clean if needed.
 
 ### Further Reading
 
