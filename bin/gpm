@@ -60,7 +60,7 @@ get_dependencies() {
   while read package _; do
     (
       echo ">> Getting package "$package"" >&3
-      go get -u -d "$package"
+      go get -u -d "$package" || abort ">> Failed getting package "$pacakge""
     ) &
   done < <(echo "$deps")
   wait
